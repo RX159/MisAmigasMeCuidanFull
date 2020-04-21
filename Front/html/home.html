@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>#MisAmigasMeCuidan</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+	<button class="tablink" onclick="openPage('Tendedero', this, '#ccccff')" id="defaultOpen">Tendedero</button>
+	<button class="tablink" onclick="openPage('Acompanar', this, '#ccccff')" id="defaultOpen">Acompa&#241ar</button>
+
+	<div id="Tendedero" class="tabcontent">
+		<i id="plus-button-1" class="fa fa-plus-square" style="font-size:38px;color:#555"></i>
+		<!-- Modal -->
+		<div id="myModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h4>Desahógate, todas te escuchan</h6>
+				<label for="titulo">Título</label>
+		    	<input type="text" id="titulo" name="titulo" size="50"><br>
+		    	<br>
+				<label for="descripcion">Descripción</label><br>
+		    	<textarea id="descripcion" name="descripcion" cols="100" rows="5"></textarea><br>
+		    	<br>
+		    	<button id="publish-button" class="button">Publicar</button>
+		    </div>
+		</div>
+	  	<div id="id-card-1" class="row"> </div>
+	</div>
+
+	<div id="Acompanar" class="tabcontent">
+		<i id="plus-button-2" class="fa fa-plus-square" style="font-size:38px;color:#555"></i>
+		<h3>Acompa&#241ar</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	  	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	  	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	  	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	  	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	  	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+	  	<div id="id-card-2" class="row"> </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/home.js"></script>
+</body>
+</html>

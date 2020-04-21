@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro</title>
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+	<section id="container-form">
+		<div id="form">
+			<h1 id="h1-r">Registro</h1>
+
+			<div class="input_wrap">
+				<input id="name" class="input-1" type="text" name="name" placeholder="Nombre completo">
+			</div>
+			<span id="name-empty" class="error hidden">El campo del nombre no puede estar vacio</span>
+
+			<div class="input_wrap">
+				<input id="id" class="input-1" type="text" name="id" placeholder="Matricula">
+			</div>
+			<span id="id-empty" class="error hidden">El campo de la matricula no puede estar vacio</span>
+			<span id="id2-empty" class="error hidden">Ya hay una cuenta con esta matricula</span>
+
+			<div class="input_wrap">
+				<input id="major" class="input-1" type="text" name="major" placeholder="Carrera o departamento">
+			</div>
+			<span id="major-empty" class="error hidden">El campo de la carrera / departamento no puede estar vacio</span>
+
+			<div>
+				<form class="radio-left">
+				    <label class="input-2">
+				      <input type="radio" name="role" value="student" checked>Estudiante
+				    </label>
+				    <label class="input-2">
+				      <input type="radio" name="role" value="teacher">Maestra
+				    </label>
+				</form>
+			</div>
+
+			<div class="input_wrap">
+				<input id="password" class="input-1" type="password" name="password" placeholder="Contrase&#241a">
+			</div>
+			<span id="password-empty" class="error hidden">El campo de la contrase&#241a no puede estar vacio</span>
+
+			<div class="input_wrap">
+				<input id="password-confirm" class="input-1" type="password" name="password" placeholder="Confirmar contrase&#241a">
+			</div>
+			<span id="passwordconfirm1-empty" class="error hidden">Este campo no puede estar vacio</span>
+			<span id="passwordconfirm2-empty" class="error hidden">No concuerdan los campos de contraseña</span>
+
+			<div>
+				<p id="p-instruction">Por favor subir una foto donde muestre su cara completa junto su credencial</p>
+				<input id="photo" class="input-1" type="file" name="photo" accept="image/*">
+			</div>
+
+			<button id="signup_button">Registrarse</button>
+			
+			<div id="signup_option">Regresar a <a href="../index.html">inicio de sesion</a></div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/register.js"></script>
+</body>
+</html>
