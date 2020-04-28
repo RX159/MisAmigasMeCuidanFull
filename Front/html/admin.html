@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>#MisAmigasMeCuidan</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+	<button class="tablink" onclick="openPage('Admin', this, '#ccccff')" id="defaultOpen" style="font-size:clamp(12px, 2vw, 16px);">Administradora</button>
+	<button class="tablink" onclick="openPage('Cerrar', this, '#ccccff')" id="defaultOpen" style="font-size: clamp(12px, 2vw, 16px); float:right;">Cerrar sesión</button>
+
+	<div id="Admin" class="tabcontent">
+		<table id="admin-table">
+		  <tr>
+		    <th>Nombre</th>
+		    <th>Correo institucional</th>
+		    <th></th>
+		  </tr>
+		  <tr>
+		    <td>Fabiana Serangelli</td>
+		    <td>A01281445@itesm.mx</td>
+		    <td><button id="revisar-button" class="button-add">Revisar</button></td>
+		  </tr>
+		  <tr>
+		    <td>Karla Martínez</td>
+		    <td>A01232851@itesm.mx</td>
+		    <!-- Falta agregar ID -->
+		    <td><button class="button-add">Revisar</button></td>
+		  </tr>
+		  <tr>
+		    <td>Paola Ochoa</td>
+		    <td>A01281311@itesm.mx</td>
+		    <!-- Falta agregar ID -->
+		    <td><button class="button-add">Revisar</button></td>
+		  </tr>
+		</table>
+		<div id="admin-modal" class="modal"></div>
+		<div id="admin-modal-aprobar" class="modal"></div>
+		<div id="admin-modal-denegar" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<!-- <h4>¿Dónde necesitas que te acompañen?</h4> -->
+				<br><br>
+				<label for="razon">Razón para negar la solicitud</label>
+			    <select id="dropdown-razon">
+				  <option value="sin-credencial">Foto sin la credencial</option>
+				  <option value="mas-personas">Foto con más de una persona</option>
+				  <option value="ilegible">Matrícula ilegible en la foto</option>
+				  <option value="no-mujer">En la foto no se encuentra una mujer</option>
+				  <option value="no-matricula">La matrícula no existe en el sistema del Tec</option>
+				  <option value="no-carrera">La carrera no existe</option>
+				  <option value="otro">Otro</option>
+				</select>
+			    <br><br>
+			    <label for="comentario">Comentarios adicionales</label><br>
+			    <textarea id="comentario" name="comentario" cols="100" rows="5"></textarea><br>
+			    <br>
+			    <button id="modal-cancelar-button" class="button-sub">Cancelar</button>
+				<button id="modal-confirmar-button" class="button-add">Enviar</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/admin.js"></script>
+</body>
+</html>

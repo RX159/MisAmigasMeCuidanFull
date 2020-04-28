@@ -9,6 +9,8 @@ body, html {
   background-color: #555;
 }
 
+/**/
+
 /* Style tab links */
 .tablink {
   background-color: #555;
@@ -19,7 +21,8 @@ body, html {
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  width: 25%;
+  /*max-width: 50vw;*/
+  min-width: 20%;
 }
 
 .tablink:hover {
@@ -40,6 +43,11 @@ body, html {
 }
 
 #Acompanar {
+  background-color: #ccccff;
+  min-height: 100vh;
+}
+
+#Admin {
   background-color: #ccccff;
   min-height: 100vh;
 }
@@ -81,6 +89,7 @@ body, html {
 
 #plus-button-1 {
   margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 #plus-button-1:hover {
@@ -89,6 +98,7 @@ body, html {
 
 #plus-button-2 {
   margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 #plus-button-2:hover {
@@ -116,7 +126,7 @@ body, html {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 30%;
 }
 
 /* The Close Button */
@@ -127,8 +137,36 @@ body, html {
   font-weight: bold;
 }
 
+.close2 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close3 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .close:hover,
 .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close2:hover,
+.close2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close3:hover,
+.close3:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -155,6 +193,146 @@ textarea {
   cursor: pointer;
 }
 
+.button-add {
+  background-color: #696994;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-sub {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .button:hover {
   background-color: #8b8bb5;
+}
+
+.button-add:hover {
+  background-color: #8b8bb5;
+}
+.button-sub:hover {
+  background-color: #0d0d0d;
+}
+
+#detalles-button {
+  color: #555;
+  font-size:22px;
+}
+
+#detalles-button:hover {
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  margin-left: 10px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  /*border: 1px solid black;*/
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+th {
+  background-color: #7f7fb3;
+  color: white;
+}
+
+tr:nth-child(odd) {
+  background: #ccccff;
+}
+
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.admin-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color: white;
+}
+
+/*.admin-title {
+  color: grey;
+  font-size: 18px;
+}*/
+
+.admin-button {
+  border: none;
+  outline: 0;
+  float: left;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  /*background-color: #000;*/
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.admin-button:hover {
+  opacity: 0.7;
+}
+
+#aprobar-button {
+  background-color: #1d8a2a;
+}
+
+#denegar-button {
+  background-color: #b30012;
 }
