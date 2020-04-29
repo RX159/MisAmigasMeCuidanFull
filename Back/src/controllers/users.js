@@ -33,8 +33,45 @@ const logout = function(req, res) {
   })
 }
 
+//Todavia no jala, no podemos probarlo, hasta tener vista de admin
+const validateUser = function(req, res) {
+  
+  const _id = req.params.id
+  const updates = Object.keys(req.body)
+  const allowedUpdates = ['validado']
+  // revisa que los updates enviados sean permitidos, que no envie una key que no permitimos
+  const isValidUpdate = updates.every((update) => allowedUpdates.includes(update))
+
+  if( !isValidUpdate ) { //debemos proteger editar con auth
+    return res.status(400).send({
+      error: 'Invalid update, only allowed to update: ' + allowedUpdates
+    })
+  }
+  User.findByIdAndUpdate(_id, req.body ).then(function(user) {
+    if (!user) {
+      return res.status(404).send({})
+    }
+    return res.send(user)
+  }).catch(function(error) {
+    res.status(500).send({ error })
+  })
+
+}
+
+const getUsers = function(req, res) {
+  User.find({}).then(function(user) {
+    res.send(user)
+  }).catch(function(error){
+    res.status(500).send({ error })
+  })
+}
+
+
+
 module.exports = {
   login: login,
   logout: logout,
-  createUser : createUser
+  createUser : createUser,
+  validateUser : validateUser,
+  getUsers : getUsers
 }

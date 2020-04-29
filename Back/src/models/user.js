@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  validado: {
+    type: String,
+    required: false
+  },
   tokens: [{
     token: {
       type: String,

@@ -37,6 +37,7 @@ const createPost = function(req, res) {
 }
 
 const updatePost = function(req, res) {
+  
   const _id = req.params.id
   const updates = Object.keys(req.body)
   const allowedUpdates = ['asunto', 'historia']
@@ -56,6 +57,7 @@ const updatePost = function(req, res) {
   }).catch(function(error) {
     res.status(500).send({ error })
   })
+  
 }
 
 //funcion para borrar un post en especifico del tendedero, se requiere el ID. Debemos agregar auth

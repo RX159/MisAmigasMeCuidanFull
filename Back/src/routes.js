@@ -11,6 +11,8 @@ const auth = require('./middleware/auth')
 router.post('/login', users.login)
 router.post('/logout', auth, users.logout)
 router.post('/users', users.createUser)  // signup
+router.get('/users', auth, users.getUsers)
+//router.update('/users' users.validateUser)
 
 //posts
 router.get('/posts/:id', auth, posts.getPost)
@@ -30,7 +32,7 @@ router.delete('/eventos/:id', auth, eventos.deleteEvento)
 
 router.get('*', function(req, res) {
   res.send({
-    error: 'This route does not exist, try /users, /posts or /eventos'
+    error: 'Default Route'
   })
 })
 

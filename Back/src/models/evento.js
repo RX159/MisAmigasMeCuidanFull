@@ -6,11 +6,15 @@ const eventoSchema = mongoose.Schema({
 		type: String,
 		required: true
 	  },
-	  hora: {
+	  horaI: {
 		type: String,
 		required: true
 	  },
-	  duracion: {
+	  horaF: {
+		type: String,
+		required: true
+	  },
+	  descripcion: {
 		type: String,
 		required: true
 	  },
@@ -19,11 +23,11 @@ const eventoSchema = mongoose.Schema({
 		default: false
 	  },
 	  lugarInicial: {
-		type: Number,
+		type: String,
 		default: false
 	  },
 	  lugarFinal: {
-		type: Number,
+		type: String,
 		default: false
 	  },
 	  involucradasCount: {

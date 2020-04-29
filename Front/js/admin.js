@@ -12,6 +12,11 @@ function openPage(pageName, elmnt, color) {
 	elmnt.style.backgroundColor = color;
 }
 
+//Ricky creacion 0
+var token = localStorage.getItem('token');
+if (token) { token = token.replace(/^"(.*)"$/, '$1'); }
+// Fin creacion Ricky
+
 var modal = document.getElementById("admin-modal");
 var modalApprove = document.getElementById("admin-modal-aprobar");
 var modalDeny = document.getElementById("admin-modal-denegar");
@@ -19,6 +24,68 @@ var btnReview = document.getElementById("revisar-button");
 var spanClose = document.getElementsByClassName("close")[0];
 var btnSend = document.getElementById("modal-confirmar-button");
 var btnCancel = document.getElementById("modal-cancelar-button");
+
+//Users
+function loadUsers() {
+  //console.log("entro al load")
+  $.ajax({
+    url: 'http://localhost:3000/users',
+    headers: {
+        'Content-Type':'application/json',
+        'Authorization': 'Bearer ' + token
+    },
+    method: 'GET',
+    dataType: 'json',
+    success: function(data){
+      for( let i = 0; i < data.length; i++) {
+      	if(data[i].validado)
+      	{
+      		if(data[i].validado == "no")
+      		{
+      			LoadUsers(data[i]._id, data[i].name, data[i].email)
+      		}
+      		else
+      		{
+      			LoadDoneUsers(data[i]._id, data[i].name, data[i].email)
+      		}
+      		
+      	}
+        
+      }
+    },
+    error: function(error_msg) {
+      alert((error_msg['responseText']));
+    }
+  });
+}
+
+loadUsers()
+
+function LoadUsers(id, Nombre, Correo) {
+	modal.style.display = "none";
+
+	$('#admin-table').prepend(
+		`<tr>
+		    <td>${Nombre}</td>
+		    <td>${Correo}</td>
+		    <td><button id="revisar-button" class="button-add">Revisar</button></td>
+		  </tr>`
+	);
+}
+
+function LoadDoneUsers(id, Nombre, Correo) {
+	modal.style.display = "none";
+
+	$('#admin-table').prepend(
+		`<tr>
+		    <td><s>${Nombre}<s></td>
+		    <td>${Correo}</td>
+		    <td><button id="revisar-button" class="button-add">Revisar</button></td>
+		  </tr>`
+	);
+}
+//
+
 
 document.addEventListener('click', function(e) {
     if (e.target && e.target.id == 'revisar-button') {

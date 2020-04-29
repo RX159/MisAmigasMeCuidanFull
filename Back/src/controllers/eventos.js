@@ -27,8 +27,9 @@ const getEventos = function(req, res) {
   const crearEvento = function(req, res) {
     const evento = new Evento({
       titulo: req.body.titulo,
-      hora: req.body.hora,
-      duracion: req.body.duracion,
+      horaI: req.body.horaI,
+      horaF: req.body.horaF,
+      descripcion: req.body.descripcion,
       fecha: req.body.fecha,
       lugarInicial: req.body.lugarInicial,
       lugarFinal: req.body.lugarFinal,
