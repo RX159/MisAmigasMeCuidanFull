@@ -7,7 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
-	<button class="tablink" onclick="openPage('Admin', this, '#ccccff')" id="defaultOpen" style="font-size:clamp(12px, 2vw, 16px);">Administradora</button>
+	<button class="tablink" onclick="openPage('Admin', this, '#ccccff')" id="defaultOpen" style="font-size:clamp(12px, 2vw, 16px);">Pendientes</button>
+	<button class="tablink" onclick="openPage('Revisadas', this, '#ccccff')" id="defaultOpen" style="font-size:clamp(12px, 2vw, 16px);">Revisadas</button>
 	<button class="tablink" onclick="openPage('Cerrar', this, '#ccccff')" id="defaultOpen" style="font-size: clamp(12px, 2vw, 16px); float:right;">Cerrar sesión</button>
 
 	<div id="Admin" class="tabcontent">
@@ -43,6 +44,16 @@
 				<button id="modal-confirmar-button" class="button-add">Enviar</button>
 			</div>
 		</div>
+	</div>
+
+	<div id="Revisadas" class="tabcontent">
+		<tr>
+		<table id="admin-table">
+		  <th>Nombre</th>
+		  <th>Correo institucional</th>
+		  <th></th>
+		 </tr>
+		</table>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"

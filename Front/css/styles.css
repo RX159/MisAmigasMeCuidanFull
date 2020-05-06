@@ -52,6 +52,11 @@ body, html {
   min-height: 100vh;
 }
 
+#Revisadas {
+  background-color: #ccccff;
+  min-height: 100vh;
+}
+
 /* Float four columns side by side */
 .column {
   float: left;
