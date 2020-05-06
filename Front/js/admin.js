@@ -24,6 +24,11 @@ var btnReview = document.getElementById("revisar-button");
 var spanClose = document.getElementsByClassName("close")[0];
 var btnSend = document.getElementById("modal-confirmar-button");
 var btnCancel = document.getElementById("modal-cancelar-button");
+var Nombre;
+var Email;
+var Carrera;
+var TipoU;
+var Foto;
 
 //Users
 function loadUsers() {
@@ -43,14 +48,18 @@ function loadUsers() {
       		if(data[i].validado == "no")
       		{
       			LoadUsers(data[i]._id, data[i].name, data[i].email)
-      		}
-      		else
+      		}      		
+      	}
+      }
+      for( let i = 0; i < data.length; i++) {
+      	if(data[i].validado)
+      	{
+      		if(data[i].validado != "no")
       		{
-      			LoadDoneUsers(data[i]._id, data[i].name, data[i].email)
+       			LoadDoneUsers(data[i]._id, data[i].name, data[i].email)
       		}
       		
       	}
-        
       }
     },
     error: function(error_msg) {
@@ -64,11 +73,11 @@ loadUsers()
 function LoadUsers(id, Nombre, Correo) {
 	modal.style.display = "none";
 
-	$('#admin-table').prepend(
+	$('#admin-table').append(
 		`<tr>
 		    <td>${Nombre}</td>
 		    <td>${Correo}</td>
-		    <td><button id="revisar-button" class="button-add">Revisar</button></td>
+		    <td><button id="revisar-button" class="button-add" yo=${id}>Revisar</button></td>
 		  </tr>`
 	);
 }
@@ -76,30 +85,54 @@ function LoadUsers(id, Nombre, Correo) {
 function LoadDoneUsers(id, Nombre, Correo) {
 	modal.style.display = "none";
 
-	$('#admin-table').prepend(
+	$('#admin-table').append(
 		`<tr>
 		    <td><s>${Nombre}<s></td>
 		    <td>${Correo}</td>
-		    <td><button id="revisar-button" class="button-add">Revisar</button></td>
+		    <td><button id="revisar-button" class="button-add" yo=${id}>Revisar</button></td>
 		  </tr>`
 	);
 }
-//
 
+
+//
 
 document.addEventListener('click', function(e) {
     if (e.target && e.target.id == 'revisar-button') {
-        modal.style.display = "block";
-        modal.innerHTML = `
-	  	<div class="admin-card">
-			<img src="../images/foto-fabiana.png" alt="Fabiana" style="width:100%">
-			<p>Nombre: Fabiana Serangelli</p>
-			<p>Matrícula: A01281445</p>
-			<p>Carrera o departamento: ITC</p>
-			<p>Rol: Estudiante</p><br>
+        
+        
+        var encontrar = e.target.attributes.yo.value;
+        //console.log('http://localhost:3000/users/'+encontrar)
+        $.ajax({
+	    url: 'http://localhost:3000/users/'+encontrar,
+	    headers: {
+	        'Content-Type':'application/json',
+	        'Authorization': 'Bearer ' + token
+	    },
+	    method: 'GET',
+    	dataType: 'json',
+    	success: function(data){
+    		Nombre = data.name;
+	        Email = data.email.substring(0,9);
+	        Carrera = data.carrera;
+	        TipoU = data.tipoUsuario;
+	        Foto = data.fotografia;
+    		//console.log(Email);
+    		console.log(Nombre);
+    		modal.style.display = "block";
+			modal.innerHTML = `
+	  		<div class="admin-card">
+			<img src="${Foto}"  height="1" width="1">
+			<p>Nombre: ${Nombre}</p>
+			<p>Matrícula: ${Email}</p>
+			<p>Carrera o departamento: ${Carrera}</p>
+			<p>Rol: ${TipoU}</p><br>
 			<p><button id="aprobar-button" class="admin-button">Aprobar</button></p>
 			<p><button id="denegar-button" class="admin-button">Denegar</button></p>
-		</div>`;
+			</div>`;
+    	},error: function(error_msg) {}
+    	});        
+        
     }
     if (e.target && e.target.id == 'aprobar-button') {
         modalApprove.style.display = "block";

@@ -116,7 +116,7 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion) {
  					padding: 5px;
  					margin-top: -0.5px">Hora fin: ${horaF}</h3>
 	  			
-	  			<i id="detalles-button" class="fa fa-ellipsis-h tooltip" aria-hidden="true" code = ${id}>
+	  			<i id="detalles-button" class="fa fa-ellipsis-h tooltip" aria-hidden="true" code = ${id} group = 1>
 	  				<span class="tooltiptext">Presiona para leer todos los detalles</span>
 	  			</i><br>
 	  			<br>
@@ -128,9 +128,8 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion) {
 
 /*
 var Detalles = document.getElementsByClassName("fa fa-ellipsis-h tooltip");
-var Detalles2 = document.getElementById("detalles-button");
 
-Detalles2.onclick = function() {
+Detalles.onclick = function() {
 	console.log(this);
 }
 

@@ -66,12 +66,23 @@ const getUsers = function(req, res) {
   })
 }
 
-
+const getUser = function(req, res) {
+  _id = req.params.id
+  User.findById(_id).then(function(user) {
+    if ( !user ) {
+      return res.send({ error : 'User not found' })
+    }
+    return res.send(user)
+  }).catch(function(error) {
+    return res.status(404).send({ error })
+  })
+}
 
 module.exports = {
   login: login,
   logout: logout,
   createUser : createUser,
   validateUser : validateUser,
-  getUsers : getUsers
+  getUsers : getUsers,
+  getUser : getUser
 }
