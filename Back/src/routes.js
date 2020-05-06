@@ -13,7 +13,7 @@ router.post('/logout', auth, users.logout)
 router.post('/users', users.createUser)  // signup
 router.get('/users', auth, users.getUsers)
 router.get('/users/:id', auth, users.getUser)
-//router.update('/users' users.validateUser)
+router.patch('/users/:id', auth, users.validateUser)
 
 //posts
 router.get('/posts/:id', auth, posts.getPost)

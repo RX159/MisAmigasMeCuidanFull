@@ -35,8 +35,7 @@ const logout = function(req, res) {
 
 //Todavia no jala, no podemos probarlo, hasta tener vista de admin
 const validateUser = function(req, res) {
-  
-  const _id = req.params.id
+    const _id = req.params.id
   const updates = Object.keys(req.body)
   const allowedUpdates = ['validado']
   // revisa que los updates enviados sean permitidos, que no envie una key que no permitimos

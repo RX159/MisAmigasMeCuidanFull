@@ -102,7 +102,6 @@ document.addEventListener('click', function(e) {
         
         
         var encontrar = e.target.attributes.yo.value;
-        //console.log('http://localhost:3000/users/'+encontrar)
         $.ajax({
 	    url: 'http://localhost:3000/users/'+encontrar,
 	    headers: {
@@ -127,15 +126,44 @@ document.addEventListener('click', function(e) {
 			<p>Matrícula: ${Email}</p>
 			<p>Carrera o departamento: ${Carrera}</p>
 			<p>Rol: ${TipoU}</p><br>
-			<p><button id="aprobar-button" class="admin-button">Aprobar</button></p>
-			<p><button id="denegar-button" class="admin-button">Denegar</button></p>
+			<p><button id="aprobar-button" class="admin-button" yo=${encontrar}>Aprobar</button></p>
+			<p><button id="denegar-button" class="admin-button" yo=${encontrar}>Denegar</button></p>
 			</div>`;
     	},error: function(error_msg) {}
     	});        
         
     }
     if (e.target && e.target.id == 'aprobar-button') {
-        modalApprove.style.display = "block";
+
+
+		var encontrar = e.target.attributes.yo.value;
+
+		json_to_send = {
+			"validado" : "si"
+		  };
+		
+		  json_to_send = JSON.stringify(json_to_send);
+
+		$.ajax({
+			url: 'http://localhost:3000/users/'+encontrar,
+			headers: {
+				'Content-Type':'application/json',
+				'Authorization': 'Bearer ' + token
+			},
+			method: 'PATCH',
+			dataType: 'json',
+			data: json_to_send,
+			success: function(data){
+
+			},
+			error: function(error_msg) {
+			  alert("No se encontro el usuario");
+			  //alert((error_msg['responseText']));
+			}
+		  });
+
+
+        /* modalApprove.style.display = "block";
         modalApprove.innerHTML = `
 	  	<div class="modal-content">
 	  		<span id=close class="close">&times;</span>
@@ -149,11 +177,39 @@ document.addEventListener('click', function(e) {
 				<button id="confirmar-button" class="button-add">Confirmar</button>
 			</div>
 			<br>
-		</div>`;
+		</div>`; */
     }
     if (e.target && e.target.id == 'denegar-button') {
+
+		var encontrar = e.target.attributes.yo.value;
+
+		json_to_send = {
+			"validado" : "No fuiste aceptada porque la foto no es clara"
+		  };
+		
+		  json_to_send = JSON.stringify(json_to_send);
+
+		$.ajax({
+			url: 'http://localhost:3000/users/'+encontrar,
+			headers: {
+				'Content-Type':'application/json',
+				'Authorization': 'Bearer ' + token
+			},
+			method: 'PATCH',
+			dataType: 'json',
+			data: json_to_send,
+			success: function(data){
+
+			},
+			error: function(error_msg) {
+			  alert("No se encontro el usuario");
+			  //alert((error_msg['responseText']));
+			}
+		  });
+
         modalDeny.style.display = "block";
-    }
+	}
+	
     if (e.target && e.target.id == 'close') {
 		modalApprove.style.display = "none";
     }
