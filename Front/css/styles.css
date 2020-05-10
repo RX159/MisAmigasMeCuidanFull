@@ -9,19 +9,15 @@ body, html {
   background-color: #555;
 }
 
-/**/
-
 /* Style tab links */
 .tablink {
   background-color: #555;
   color: white;
-  /*float: left;*/
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  /*max-width: 50vw;*/
   min-width: 20%;
 }
 
@@ -86,35 +82,25 @@ body, html {
 /* Style the counter cards */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
   height: 300px;
   overflow-y: scroll;
   text-align: center;
   background-color: #f1f1f1;
   margin-bottom: 10px;
-  /*overflow:hidden;*/
-  text-overflow: ellipsis;
-  content: "";
-  position:relative;
 }
 
-/*.sticky {
-  content="";
-  background:linear-gradient(transparent 150px, #f1f1f1);
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 0;
-}*/
+.padding {
+  padding: 16px;
+}
 
-.card:after {
-    content:'';
-    width:100%;
-    height:100%;    
-    position: -webkit-sticky;
-    position: absolute;
-    left:0;
-    bottom:0;
-    background:linear-gradient(transparent 150px, #f1f1f1);
+.sticky {
+  content: '';
+  width: 100%;
+  height: 50%;
+  left: 0;
+  bottom: 0;
+  position: sticky;
+  background: linear-gradient(to bottom, rgba(241,241,241,0), rgba(241,241,241,1));
 }
 
 #plus-button-1 {
@@ -272,7 +258,6 @@ textarea {
 .tooltip {
   position: relative;
   display: inline-block;
-  /*border-bottom: 1px dotted black;*/
 }
 
 .tooltip .tooltiptext {
@@ -298,10 +283,6 @@ textarea {
 table {
   width: 100%;
   border-collapse: collapse;
-}
-
-table, th, td {
-  /*border: 1px solid black;*/
 }
 
 th, td {
@@ -336,11 +317,6 @@ tr:nth-child(even) {
   background-color: white;
 }
 
-/*.admin-title {
-  color: grey;
-  font-size: 18px;
-}*/
-
 .admin-button {
   border: none;
   outline: 0;
@@ -348,7 +324,6 @@ tr:nth-child(even) {
   display: inline-block;
   padding: 8px;
   color: white;
-  /*background-color: #000;*/
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -366,14 +341,3 @@ tr:nth-child(even) {
 #denegar-button {
   background-color: #b30012;
 }
-
-/*#bottom_fade {
-  width: 100%;
-  height: 100px;
-  z-index: 99;
-  position: absolute;
-  bottom: 0px;
-  background: url("../images/gray-fade.png");
-}*/
-
-

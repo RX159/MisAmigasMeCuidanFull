@@ -60,8 +60,11 @@ function LoadPosts(id, asunto, historia) {
 	$('#id-card-1').prepend(
 		`<div class="column">
 			<div class="card">
-	  			<h3>${asunto}</h3>
-	  			<p>${historia}</p>
+				<div class="padding">
+		  			<h3>${asunto}</h3>
+		  			<p>${historia}</p>
+		  		</div>
+	  			<div class="sticky"></div>
 	  		</div>
 	  	</div>`);
 
@@ -149,8 +152,11 @@ btnPublish.onclick = function() {
 	$('#id-card-1').prepend(
 		`<div class="column">
 			<div class="card">
-	  			<h3>${$('#titulo').val()}</h3>
-	  			<p>${$('#descripcion').val()}</p>
+				<div class="padding">
+	  				<h3>${$('#titulo').val()}</h3>
+	  				<p>${$('#descripcion').val()}</p>
+	  			</div>
+	  			<div class="sticky"></div>
 	  		</div>
 	  	</div>`);
 
