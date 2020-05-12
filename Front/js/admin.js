@@ -29,6 +29,7 @@ var Email;
 var Carrera;
 var TipoU;
 var Foto;
+var BtnLogOff = document.getElementById("LogOff");
 
 //Users
 function loadUsers() {
@@ -73,7 +74,7 @@ loadUsers()
 function LoadUsers(id, Nombre, Correo) {
 	modal.style.display = "none";
 
-	$('#admin-table').append(
+	$('#Pendientes').append(
 		`<tr>
 		    <td>${Nombre}</td>
 		    <td>${Correo}</td>
@@ -85,7 +86,7 @@ function LoadUsers(id, Nombre, Correo) {
 function LoadDoneUsers(id, Nombre, Correo) {
 	modal.style.display = "none";
 
-	$('#admin-table').append(
+	$('#RevisadasT').append(
 		`<tr>
 		    <td><s>${Nombre}<s></td>
 		    <td>${Correo}</td>
@@ -240,6 +241,47 @@ btnSend.onclick = function() {
 
 spanClose.onclick = function() {
 	modalDeny.style.display = "none";
+}
+
+BtnLogOff.onclick = function() {
+
+	if (confirm("¿Cerrar sesión?")) 
+	{
+		//console.log(localStorage.getItem('token'));
+	    
+	    json_to_send = {
+	    	"tokens" : token
+	    };
+
+    	json_to_send = JSON.stringify(json_to_send);
+    	
+  
+    	$.ajax({
+	      url: 'http://localhost:3000/logout',
+	      headers: {
+	          'Content-Type':'application/json',
+        	'Authorization': 'Bearer ' + token
+	      },
+	      method: 'POST',
+	      dataType: 'json',
+	      data: json_to_send,
+	      success: function(data){
+
+	      //localStorage.setItem('token', "")
+		  window.location = '../index.html';
+      	},
+      	error: function(error_msg) 
+      	{
+      		window.location = '../index.html';
+      		//console.log(error_msg);
+        	//alert("Aja, no deberias estar aqui");
+	    }
+		});
+
+	  //txt = "You pressed OK!";
+	} else {
+	  //txt = "You pressed Cancel!";
+	}
 }
 
 // Se cierra el modal al presionar fuera de este mismo
