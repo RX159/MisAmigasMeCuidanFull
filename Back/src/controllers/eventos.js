@@ -48,7 +48,7 @@ const getEventos = function(req, res) {
   const updateEvento = function(req, res) {
     const _id = req.params.id
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['titulo', 'hora', 'duracion', 'fecha', 'lugarInicial', 'lugarFinal']
+    const allowedUpdates = ['titulo', 'hora', 'duracion', 'fecha', 'lugarInicial', 'lugarFinal', 'involucradas', 'involucradasCount']
     // revisa que los updates enviados sean permitidos, que no envie una key que no permitimos
     const isValidUpdate = updates.every((update) => allowedUpdates.includes(update))
   

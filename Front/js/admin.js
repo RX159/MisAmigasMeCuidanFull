@@ -10,6 +10,15 @@ function openPage(pageName, elmnt, color) {
 	}
 	document.getElementById(pageName).style.display = "block";
 	elmnt.style.backgroundColor = color;
+
+	if(pageName == 'Admin')
+	{
+		modal = modalPendientes
+	}
+	else if(pageName == 'Revisadas')
+	{
+		modal = modalRevisadas
+	}
 }
 
 //Ricky creacion 0
@@ -17,7 +26,9 @@ var token = localStorage.getItem('token');
 if (token) { token = token.replace(/^"(.*)"$/, '$1'); }
 // Fin creacion Ricky
 
-var modal = document.getElementById("admin-modal");
+var modal;
+var modalPendientes = document.getElementById("admin-modal-Pendientes");
+var modalRevisadas = document.getElementById("admin-modal-Revisadas");
 var modalApprove = document.getElementById("admin-modal-aprobar");
 var modalDeny = document.getElementById("admin-modal-denegar");
 var btnReview = document.getElementById("revisar-button");
@@ -30,6 +41,9 @@ var Carrera;
 var TipoU;
 var Foto;
 var BtnLogOff = document.getElementById("LogOff");
+var Encontrar2;
+var Razon = document.getElementById("dropdown-razon");
+var Comment = document.getElementById("comentario");
 
 //Users
 function loadUsers() {
@@ -46,7 +60,7 @@ function loadUsers() {
       for( let i = 0; i < data.length; i++) {
       	if(data[i].validado)
       	{
-      		if(data[i].validado == "no")
+      		if(data[i].validado != "si")
       		{
       			LoadUsers(data[i]._id, data[i].name, data[i].email)
       		}      		
@@ -55,7 +69,7 @@ function loadUsers() {
       for( let i = 0; i < data.length; i++) {
       	if(data[i].validado)
       	{
-      		if(data[i].validado != "no")
+      		if(data[i].validado == "si")
       		{
        			LoadDoneUsers(data[i]._id, data[i].name, data[i].email)
       		}
@@ -72,7 +86,7 @@ function loadUsers() {
 loadUsers()
 
 function LoadUsers(id, Nombre, Correo) {
-	modal.style.display = "none";
+	modalPendientes.style.display = "none";
 
 	$('#Pendientes').append(
 		`<tr>
@@ -84,23 +98,19 @@ function LoadUsers(id, Nombre, Correo) {
 }
 
 function LoadDoneUsers(id, Nombre, Correo) {
-	modal.style.display = "none";
+	modalRevisadas.style.display = "none";
 
 	$('#RevisadasT').append(
 		`<tr>
 		    <td><s>${Nombre}<s></td>
 		    <td>${Correo}</td>
-		    <td><button id="revisar-button" class="button-add" yo=${id}>Revisar</button></td>
 		  </tr>`
 	);
 }
 
-
-//
-
 document.addEventListener('click', function(e) {
+	Click = 0;
     if (e.target && e.target.id == 'revisar-button') {
-        
         
         var encontrar = e.target.attributes.yo.value;
         $.ajax({
@@ -117,12 +127,14 @@ document.addEventListener('click', function(e) {
 	        Carrera = data.carrera;
 	        TipoU = data.tipoUsuario;
 	        Foto = data.fotografia;
-    		//console.log(Email);
-    		console.log(Nombre);
+    		//console.log(Foto);
+    		//console.log(Nombre);
+    		console.log(  );
+    	
     		modal.style.display = "block";
 			modal.innerHTML = `
 	  		<div class="admin-card">
-			<img src="${Foto}"  height="1" width="1">
+			<iframe src=${Foto} width="300" height="400"></iframe>
 			<p>Nombre: ${Nombre}</p>
 			<p>Matrícula: ${Email}</p>
 			<p>Carrera o departamento: ${Carrera}</p>
@@ -132,39 +144,13 @@ document.addEventListener('click', function(e) {
 			</div>`;
     	},error: function(error_msg) {}
     	});        
-        
     }
     if (e.target && e.target.id == 'aprobar-button') {
 
+    	var encontrar = e.target.attributes.yo.value;
+    	Encontrar2 = encontrar;
 
-		var encontrar = e.target.attributes.yo.value;
-
-		json_to_send = {
-			"validado" : "si"
-		  };
-		
-		  json_to_send = JSON.stringify(json_to_send);
-
-		$.ajax({
-			url: 'http://localhost:3000/users/'+encontrar,
-			headers: {
-				'Content-Type':'application/json',
-				'Authorization': 'Bearer ' + token
-			},
-			method: 'PATCH',
-			dataType: 'json',
-			data: json_to_send,
-			success: function(data){
-
-			},
-			error: function(error_msg) {
-			  alert("No se encontro el usuario");
-			  //alert((error_msg['responseText']));
-			}
-		  });
-
-
-        /* modalApprove.style.display = "block";
+        modalApprove.style.display = "block";
         modalApprove.innerHTML = `
 	  	<div class="modal-content">
 	  		<span id=close class="close">&times;</span>
@@ -175,23 +161,36 @@ document.addEventListener('click', function(e) {
 			<div style="text-align: center;
 			margin-bottom: 50px;">
 				<button id="cancelar-button" class="button-sub">Cancelar</button>
-				<button id="confirmar-button" class="button-add">Confirmar</button>
+				<button id="confirmar-button2" class="button-add">Confirmar</button>
 			</div>
 			<br>
-		</div>`; */
+		</div>`; 
     }
     if (e.target && e.target.id == 'denegar-button') {
 
-		var encontrar = e.target.attributes.yo.value;
-
+    	var encontrar = e.target.attributes.yo.value;
+    	Encontrar2 = encontrar;
+    	//console.log(Encontrar2);
+        modalDeny.style.display = "block";
+	}
+    if (e.target && e.target.id == 'close') {
+		modalApprove.style.display = "none";
+    }
+    if (e.target && e.target.id == 'cancelar-button') {
+		modalApprove.style.display = "none";
+    }
+    if (e.target && e.target.id == 'confirmar-button2') {
+		
+		//var encontrar = e.target.attributes.yo.value;
+		//console.log("Aja, entre")
 		json_to_send = {
-			"validado" : "No fuiste aceptada porque la foto no es clara"
+			"validado" : "si"
 		  };
 		
 		  json_to_send = JSON.stringify(json_to_send);
 
 		$.ajax({
-			url: 'http://localhost:3000/users/'+encontrar,
+			url: 'http://localhost:3000/users/'+Encontrar2,
 			headers: {
 				'Content-Type':'application/json',
 				'Authorization': 'Bearer ' + token
@@ -208,26 +207,61 @@ document.addEventListener('click', function(e) {
 			}
 		  });
 
-        modalDeny.style.display = "block";
-	}
-	
-    if (e.target && e.target.id == 'close') {
+		modal.style.display = "none";
 		modalApprove.style.display = "none";
     }
-    if (e.target && e.target.id == 'cancelar-button') {
-		modalApprove.style.display = "none";
-    }
-    if (e.target && e.target.id == 'confirmar-button') {
+    if (e.target && e.target.id == 'modal-confirmar-button') {
+    	
+    	//var encontrar = document.cookie;
+    	//console.log(e.target);
+    	//console.log(Razon.options[Razon.selectedIndex].value);
+		var NegadoX = "no, porque " + Razon.options[Razon.selectedIndex].text + " y " + Comment.value;
+		NegadoX = NegadoX.toLowerCase();
+		//console.log(NegadoX);
+		//console.log(Comment.value)
+		
+		json_to_send = {
+			"validado" : NegadoX
+		  };
+		
+		  json_to_send = JSON.stringify(json_to_send);
+		  //No fuiste aceptada porque la foto no es clara
+		$.ajax({
+			url: 'http://localhost:3000/users/'+Encontrar2,
+			headers: {
+				'Content-Type':'application/json',
+				'Authorization': 'Bearer ' + token
+			},
+			method: 'PATCH',
+			dataType: 'json',
+			data: json_to_send,
+			success: function(data){
+
+			},
+			error: function(error_msg) {
+			  alert("No se encontro el usuario");
+			  //alert((error_msg['responseText']));
+			}
+		  });
+		
     	modal.style.display = "none";
 		modalApprove.style.display = "none";
     }
-  //   if (e.target && e.target.id == btnCancel) {
-		// modalDeny.style.display = "none";
-  //   }
-  //   if (e.target && e.target.id == btnSend) {
-		// modal.style.display = "none";
-		// modalDeny.style.display = "none";
-  //   }
+     if (e.target && e.target.id == btnCancel) {
+		 modalDeny.style.display = "none";
+    }
+    if (e.target && e.target.id == btnSend) {
+		 modal.style.display = "none";
+		 modalDeny.style.display = "none";
+     }
+   if(e.target && e.target.id == 'admin-modal-Pendientes')
+   {
+   	modal.style.display = "none";
+	modalDeny.style.display = "none";
+	modalApprove.style.display= "none";
+   }
+   
+   //console.log(e.target);
  });
 
 btnCancel.onclick = function() {
@@ -235,6 +269,7 @@ btnCancel.onclick = function() {
 }
 
 btnSend.onclick = function() {
+
 	modal.style.display = "none";
 	modalDeny.style.display = "none";
 }
@@ -286,12 +321,7 @@ BtnLogOff.onclick = function() {
 
 // Se cierra el modal al presionar fuera de este mismo
 window.onclick = function(event) {
-	if (event.target == modal) {
-		modal.style.display = "none"
-	}
-	if (event.target == modalApprove) {
-		modalApprove.style.display = "none"
-	}
+	
 }
 
 // Get the element with id="defaultOpen" and click on it
