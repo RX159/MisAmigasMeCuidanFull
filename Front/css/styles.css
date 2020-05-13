@@ -89,6 +89,18 @@ body, html {
   margin-bottom: 10px;
 }
 
+.cardEvent {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 300px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  /*overflow-y: scroll;*/
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
 .padding {
   padding: 16px;
 }

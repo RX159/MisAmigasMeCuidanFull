@@ -104,7 +104,7 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion) {
 	//console.log(tituloComp)
 	$('#id-card-2').prepend(
 		`<div class="column">
-			<div class="card">
+			<div class="cardEvent">
 	  			<h3>${lugar}</h3>
 	  			<h5 style="border-style: solid;
  					border-color: #ccccff;
@@ -216,7 +216,7 @@ btnPublish2.onclick = function() {
 	modal2.style.display = "none";
 	$('#id-card-2').prepend(
 		`<div class="column">
-			<div class="card">
+			<div class="cardEvent">
 	  			<h3>${$('#lugar').val()}</h3>
 	  			<h5 style="border-style: solid;
  					border-color: #ccccff;
