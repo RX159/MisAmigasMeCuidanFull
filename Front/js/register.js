@@ -19,7 +19,9 @@ $('#signup_button').on('click', (function(event) {
   let $passwordconfirm1_empty = $('#passwordconfirm1-empty')
   let $passwordconfirm2_empty = $('#passwordconfirm2-empty')
 
-  let $photo = $('#photo')
+  let $photo = $('#photo2')
+  let $photo_empty = $('#photo-empty')
+
   let $p_instruction = $('#p-instruction')
 
 
@@ -79,6 +81,12 @@ if($major.val() == '') {
     $passwordconfirm2_empty.addClass('hidden')
   }
 
+   if($photo.val() == '') {
+    $photo_empty.removeClass('hidden')
+  } else {
+    $photo_empty.addClass('hidden')
+  }
+
   // INICIO DE BACK //
 
   json_to_send = {
@@ -88,7 +96,7 @@ if($major.val() == '') {
       "password": $password.val(),
       "carrera": $major.val(),
       "celular": "123456789",
-      "fotografia": "simon",
+      "fotografia": $photo.val(),
       "validado": "no"
     }
 

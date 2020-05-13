@@ -14,6 +14,7 @@ function openPage(pageName, elmnt, color) {
 
 //Ricky creacion 0
 var token = localStorage.getItem('token');
+var YoMerengue = localStorage.getItem('YoActual');
 if (token) { token = token.replace(/^"(.*)"$/, '$1'); }
 // Fin creacion Ricky
 
@@ -27,6 +28,9 @@ var btnAdd1 = document.getElementById("plus-button-1");
 var btnAdd2 = document.getElementById("plus-button-2");
 var btnPublish = document.getElementById("publish-button");
 var btnPublish2 = document.getElementById("publish-button-2");
+var BtnLogOff = document.getElementById("LogOff");
+var CInvo;
+var Encontrar2;
 
 //Inicio de Metio Ricky
 //Al cargarse la pagina debe tratar de conseguir todas las tarjetas que ya existen
@@ -123,7 +127,7 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion) {
 	  				<span class="tooltiptext">Presiona para leer todos los detalles</span>
 	  			</i><br>
 	  			<br>
-	  			<button id="acompanar-button" class="button-add">Acompañar</button>
+	  			<button id="acompanar-button" class="button-add"code = ${id}>Acompañar</button>
 	  		</div>
 	  	</div>`);
 
@@ -286,24 +290,96 @@ btnPublish2.onclick = function() {
 
 document.addEventListener('click', function(e) {
     if (e.target && e.target.id == 'detalles-button') {
-          modal3.style.display = "block";
-          modal3.innerHTML = `
+    	var encontrar = e.target.attributes.code.value;
+
+	    $.ajax({
+	    url: 'http://localhost:3000/eventos/'+ encontrar,
+	    headers: {
+	        'Content-Type':'application/json',
+	        'Authorization': 'Bearer ' + token
+	    },
+	    method: 'GET',
+	    dataType: 'json',
+	    success: function(data){
+
+	    	/*
+	    	const today = new Date();
+	    	const Hoy = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	    	//console.log(data.fecha);
+	    	//console.log(Hoy);
+			const CuandoEs = new Date(data.fecha);
+			console.log(CuandoEs);
+			console.log(Hoy);
+			const diffTime = Math.abs(CuandoEs - Hoy);
+			console.log(diffTime);
+			const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+			*/
+	    	console.log(data.fecha);
+	   		modal3.style.display = "block";
+         	modal3.innerHTML = `
 	  		<div class="modal-content">
 				<span id= close class="close3">&times;</span>
 				<p style="margin: 5px;
-				margin-top:30px;">Lugar: </p><br>
+				margin-top:30px;"><b>Lugar:</b> ${data.lugarInicial} </p><br>
 				<br>
-				<p style="margin: 5px;">Fecha: </p><br>
+				<p style="margin: 5px;"><b>Fecha:</b> ${data.fecha.substring(8, 10)}/${data.fecha.substring(5, 7)}/${data.fecha.substring(0, 4)} </p><br>
 				<br>
-				<p style="margin: 5px;">Hora inicio: </p><br>
+				<p style="margin: 5px;"><b>Hora inicio:</b> ${data.horaI} </p><br>
 				<br>
-				<p style="margin: 5px;">Hora fin: </p><br>
+				<p style="margin: 5px;"><b>Hora fin:</b> ${data.horaF} </p><br>
 				<br >
-				<p style="margin: 5px;">Descripción: </p><br>
+				<p style="margin: 5px;"><b>Descripción:</b> ${data.descripcion} </p><br>
 		    </div>
 	  	</div>`;
+	      
+	    },
+	    error: function(error_msg) {
+	      alert((error_msg['responseText']));
+	    	}
+	  	});
     }
     if (e.target && e.target.id == 'acompanar-button') {
+    	Encontrar2 = e.target.attributes.code.value;
+
+    	//Ecnontrar la lista de involucradas
+		$.ajax({
+	    url: 'http://localhost:3000/eventos/'+ Encontrar2,
+	    headers: {
+	        'Content-Type':'application/json',
+	        'Authorization': 'Bearer ' + token
+	    },
+	    method: 'GET',
+	    dataType: 'json',
+	    success: function(data){
+	    	var YaTa=false;
+	    	CInvo = data.involucradas;
+	    	for( let i = 0; i < data.involucradasCount; i++) {
+		      	if(data.involucradas[i] == YoMerengue)
+		      	{
+		      		YaTa = true;
+		      	}
+		     }
+
+		    if(YaTa == false)
+		    {
+		    	CInvo[data.involucradasCount] = YoMerengue;
+		    }
+	    	
+	    	//console.log(CInvo);
+
+	    	//console.log("lo que se va a mandar");
+			//console.log(CInvo);
+			//console.log(CInvo.length);
+			  
+			
+	    },
+	    error: function(error_msg) {
+	      alert((error_msg['responseText']));
+
+	    }
+	 	 });
+
+
           modal3.style.display = "block";
           modal3.innerHTML = `
 	  		<div class="modal-content">
@@ -327,6 +403,46 @@ document.addEventListener('click', function(e) {
 		modal3.style.display = "none";
     }
     if (e.target && e.target.id == 'confirmar-button') {
+		//console.log(e.target.attributes);
+		//var encontrar = e.target.attributes.code.value;
+		//var YoMerengue = localStorage.getItem('YoActual');
+		
+		console.log("lo que se va a mandar");
+			console.log(CInvo);
+			console.log(CInvo.length);
+		
+
+		json_to_send = {
+				"involucradasCount" : CInvo.length,
+				"involucradas" : CInvo
+			  };
+
+			  json_to_send = JSON.stringify(json_to_send);
+		//console.log(YoMerengue);
+		//CInvo[CInvo.length] = YoMerengue;
+		//console.log(CInvo);
+		//Updatear la lista de involucradas para contarme a mi
+
+		$.ajax({
+				url: 'http://localhost:3000/eventos/'+Encontrar2,
+				headers: {
+					'Content-Type':'application/json',
+					'Authorization': 'Bearer ' + token
+				},
+				method: 'PATCH',
+				dataType: 'json',
+				data: json_to_send,
+				success: function(data){
+					alert("Te registraste");
+
+				},
+				error: function(error_msg) {
+				  alert("No se encontro el usuario");
+				  //alert((error_msg['responseText']));
+				}
+			  });
+
+
 		modal3.style.display = "none";
     }
  });
@@ -346,6 +462,47 @@ window.onclick = function(event) {
 	}
 	if (event.target == modal3) {
 		modal3.style.display = "none"
+	}
+}
+
+BtnLogOff.onclick = function() {
+
+	if (confirm("¿Cerrar sesión?")) 
+	{
+		//console.log(localStorage.getItem('token'));
+	    
+	    json_to_send = {
+	    	"tokens" : token
+	    };
+
+    	json_to_send = JSON.stringify(json_to_send);
+    	
+  
+    	$.ajax({
+	      url: 'http://localhost:3000/logout',
+	      headers: {
+	          'Content-Type':'application/json',
+        	'Authorization': 'Bearer ' + token
+	      },
+	      method: 'POST',
+	      dataType: 'json',
+	      data: json_to_send,
+	      success: function(data){
+
+	      //localStorage.setItem('token', "")
+		  window.location = '../index.html';
+      	},
+      	error: function(error_msg) 
+      	{
+      		window.location = '../index.html';
+      		//console.log(error_msg);
+        	//alert("Aja, no deberias estar aqui");
+	    }
+		});
+
+	  //txt = "You pressed OK!";
+	} else {
+	  //txt = "You pressed Cancel!";
 	}
 }
 

@@ -5,21 +5,24 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<Ricky>
+	
+	</Ricky>
 </head>
 <body>
-	<button class="tablink" onclick="openPage('Admin', this, '#ccccff')" id="defaultOpen" style="font-size:clamp(12px, 2vw, 16px);">Pendientes</button>
-	<button class="tablink" onclick="openPage('Revisadas', this, '#ccccff')" id="defaultOpen" style="font-size:clamp(12px, 2vw, 16px);">Revisadas</button>
-	<button class="tablink" onclick="openPage('Cerrar', this, '#ccccff')" id="defaultOpen" style="font-size: clamp(12px, 2vw, 16px); float:right;">Cerrar sesión</button>
+	<button class="tablink" onclick="openPage('Admin', this, '#ccccff')" id="defaultOpen"  style="font-size:clamp(12px, 2vw, 16px);">Pendientes</button>
+	<button class="tablink" onclick=" openPage('Revisadas', this, '#ccccff')" id="defaultOpen"  style="font-size:clamp(12px, 2vw, 16px);">Revisadas</button>
+	<button class="tablink" id="LogOff" style="font-size: clamp(12px, 2vw, 16px); float:right;">Cerrar sesión</button>
 
 	<div id="Admin" class="tabcontent">
 		<tr>
-		<table id="admin-table">
+		<table id="Pendientes">
 		  <th>Nombre</th>
 		    <th>Correo institucional</th>
 		    <th></th>
 		  </tr>
 		</table>
-		<div id="admin-modal" class="modal"></div>
+		<div id="admin-modal-Pendientes" class="modal"></div>
 		<div id="admin-modal-aprobar" class="modal"></div>
 		<div id="admin-modal-denegar" class="modal">
 			<div class="modal-content">
@@ -48,12 +51,13 @@
 
 	<div id="Revisadas" class="tabcontent">
 		<tr>
-		<table id="admin-table">
+		<table id="RevisadasT">
 		  <th>Nombre</th>
 		  <th>Correo institucional</th>
 		  <th></th>
 		 </tr>
 		</table>
+		<div id="admin-modal-Revisadas" class="modal"></div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"

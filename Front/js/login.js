@@ -68,6 +68,7 @@ $('#login_button').on('click', function(){
         {
           alert("Login successfull!");
           localStorage.setItem('token', data.token)
+          localStorage.setItem('YoActual', data.user.id)
           window.location = MeVoy
         }
         else
