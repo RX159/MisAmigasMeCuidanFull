@@ -87,7 +87,17 @@ function loadEvents() {
     dataType: 'json',
     success: function(data){
       for( let i = 0; i < data.length; i++) {
-        LoadEvents(data[i]._id, data[i].titulo, data[i].horaI, data[i].horaF, data[i].lugarInicial ,data[i].descripcion)
+
+      	var YaToy = false;
+
+      	for( let y = 0; y < data[i].involucradasCount; y++) {
+		      	if(data[i].involucradas[y] == YoMerengue)
+		      	{
+		      		YaToy = true;
+		      	}
+		     }
+
+        LoadEvents(data[i]._id, data[i].titulo, data[i].horaI, data[i].horaF, data[i].lugarInicial ,data[i].descripcion, YaToy)
       }
     },
     error: function(error_msg) {
@@ -98,9 +108,19 @@ function loadEvents() {
 
 loadEvents()
 
-function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion) {
+function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion,Inscrita) {
 	modal.style.display = "none";
-	
+	var btnAcomp;
+
+	if(Inscrita)
+	{
+		btnAcomp = `` ;
+	}
+	else
+	{
+		btnAcomp = `<button id="acompanar-button" class="button-add"code = ${id}>Acompañar</button>` ;
+	}
+
 	//console.log(tituloComp)
 	$('#id-card-2').prepend(
 		`<div class="column">
@@ -127,7 +147,7 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion) {
 	  				<span class="tooltiptext">Presiona para leer todos los detalles</span>
 	  			</i><br>
 	  			<br>
-	  			<button id="acompanar-button" class="button-add"code = ${id}>Acompañar</button>
+	  			${btnAcomp}
 	  		</div>
 	  	</div>`);
 
@@ -434,6 +454,7 @@ document.addEventListener('click', function(e) {
 				data: json_to_send,
 				success: function(data){
 					alert("Te registraste");
+					//La funcion de Mail para ambas
 
 				},
 				error: function(error_msg) {

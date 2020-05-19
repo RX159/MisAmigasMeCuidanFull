@@ -119,6 +119,9 @@ if($major.val() == '') {
         alert("Successfully created");
         console.log('success: ' + data);
         window.location = '../index.html'
+        //Mandar mail que te registraste
+        //Mandar mail a la admin para que sepa
+
       },
       error: function(error_msg) {
         if($id.val() != '') {

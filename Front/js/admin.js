@@ -199,6 +199,7 @@ document.addEventListener('click', function(e) {
 			dataType: 'json',
 			data: json_to_send,
 			success: function(data){
+				//Aqui va el mail cuando te aceptan
 
 			},
 			error: function(error_msg) {
@@ -236,6 +237,8 @@ document.addEventListener('click', function(e) {
 			dataType: 'json',
 			data: json_to_send,
 			success: function(data){
+				//Madar mail que fue negada
+				//Razon.options[Razon.selectedIndex] nos dara el motivo/ el template a mandar
 
 			},
 			error: function(error_msg) {
