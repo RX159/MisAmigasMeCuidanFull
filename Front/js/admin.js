@@ -102,7 +102,7 @@ function LoadDoneUsers(id, Nombre, Correo) {
 
 	$('#RevisadasT').append(
 		`<tr>
-		    <td><s>${Nombre}<s></td>
+		    <td>${Nombre}</td>
 		    <td>${Correo}</td>
 		  </tr>`
 	);
@@ -200,7 +200,6 @@ document.addEventListener('click', function(e) {
 			data: json_to_send,
 			success: function(data){
 				//Aqui va el mail cuando te aceptan
-
 			},
 			error: function(error_msg) {
 			  alert("No se encontro el usuario");

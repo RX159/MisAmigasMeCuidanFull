@@ -19,6 +19,9 @@ $('#signup_button').on('click', (function(event) {
   let $passwordconfirm1_empty = $('#passwordconfirm1-empty')
   let $passwordconfirm2_empty = $('#passwordconfirm2-empty')
 
+  let $cel = $('#celular')
+  let $cel_empty = $('#cel-empty')
+
   let $photo = $('#photo2')
   let $photo_empty = $('#photo-empty')
 
@@ -34,7 +37,7 @@ $('#signup_button').on('click', (function(event) {
       $name_empty.addClass('hidden')
     } else {
       $name_empty.removeClass('hidden')
-      $name_empty.text('Your name should only have letters')
+      $name_empty.text('Tu nombre solo deberia tener')
     }
   }
 
@@ -48,7 +51,7 @@ $('#signup_button').on('click', (function(event) {
     } else {
       $id2_empty.addClass('hidden')
       $id_empty.removeClass('hidden')
-      $id_empty.text('This email is not valid')
+      $id_empty.text('Este email no es valido')
     }
   }
 
@@ -59,7 +62,7 @@ if($major.val() == '') {
       $major_empty.addClass('hidden')
     } else {
       $major_empty.removeClass('hidden')
-      $major_empty.text('Your major should only have letters')
+      $major_empty.text('No puedes dejar esto vacío')
     }
   }
 
@@ -81,6 +84,17 @@ if($major.val() == '') {
     $passwordconfirm2_empty.addClass('hidden')
   }
 
+  if($cel.val() == '') {
+    $cel_empty.removeClass('hidden')
+  } else {
+    if( validation_cel( $cel.val()) ) {
+      $cel_empty.addClass('hidden')
+    } else {
+      $cel_empty.removeClass('hidden')
+      $cel_empty.text('El celular son 10 numeros')
+    }
+  }
+
    if($photo.val() == '') {
     $photo_empty.removeClass('hidden')
   } else {
@@ -95,7 +109,7 @@ if($major.val() == '') {
       "email": $id.val()+"@itesm.mx",
       "password": $password.val(),
       "carrera": $major.val(),
-      "celular": "123456789",
+      "celular": $cel.val(),
       "fotografia": $photo.val(),
       "validado": "no"
     }
@@ -139,8 +153,14 @@ function validation_matricula(matricula) {
     return regexp_matricula.test(matricula)
   }
 
-  function validation_name(name) {
+function validation_name(name) {
     var regexp_name = /^[A-Za-z]/
     return regexp_name.test(name)
   }
+
+function validation_cel(cel) {
+    var regexp_cel = /\d\d\d\d\d\d\d\d\d\d/
+    return regexp_cel.test(cel)
+  }
+
 }))
