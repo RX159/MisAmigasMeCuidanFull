@@ -147,6 +147,69 @@ if($major.val() == '') {
 
   // // FIN DE BACK //
 
+  //la mandada de Mail --------------------------------------------------------------
+    console.log("Se mando primero este")
+    console.log(YoMerengue)
+    $.ajax({
+        url: 'http://localhost:3000/users/'+YoMerengue,
+        headers: {
+            'Content-Type':'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        method: 'GET',
+        dataType: 'json',
+        success: function(data){
+          //console.log(data)
+          localStorage.setItem("email",data.email)
+          localStorage.setItem("name",data.name)
+          localStorage.setItem("matricula",data.email.substring(0, 9))
+          localStorage.setItem("cel",data.celular)
+          localStorage.setItem("dep",data.carrera)
+          localStorage.setItem("rol",data.tipoUsuario)
+
+        },
+        error: function(error_msg) {
+          
+        }
+      });
+
+    json_to_send = {
+          "Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+          "Purpose": 5,
+          "Content": 10,
+          "RelevantInfo": {
+            "name": localStorage.getItem('name'),
+            "matr": localStorage.getItem('matricula'),
+            "cel": localStorage.getItem('cel'),
+            "dep": localStorage.getItem('dep'),
+            "rol": localStorage.getItem('rol')
+          }
+        };
+
+    console.log(json_to_send)
+
+    json_to_send = JSON.stringify(json_to_send);
+
+    $.ajax({
+        url: 'http://localhost:3000/mail',
+        headers: {
+          'Content-Type':'application/json',
+          'Authorization': 'Bearer '
+        },
+        method: 'POST',
+        dataType: 'json',
+        data: json_to_send,
+        success: function(data){
+
+        },
+        error: function(error_msg) {
+
+        }
+        });
+
+    
+//Maldito Mail --------------------------------------------------------------------
+
 
 function validation_matricula(matricula) {
     var regexp_matricula = /\S\d+/

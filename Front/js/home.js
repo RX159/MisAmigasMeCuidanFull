@@ -97,7 +97,7 @@ function loadEvents() {
 		      	}
 		     }
 
-        LoadEvents(data[i]._id, data[i].titulo, data[i].horaI, data[i].horaF, data[i].lugarInicial ,data[i].descripcion, YaToy)
+        LoadEvents(data[i]._id, data[i].titulo, data[i].horaI, data[i].horaF, data[i].lugarInicial ,data[i].descripcion, YaToy, data[i].creadoPor)
       }
     },
     error: function(error_msg) {
@@ -108,7 +108,7 @@ function loadEvents() {
 
 loadEvents()
 
-function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion,Inscrita) {
+function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion,Inscrita, Creadora) {
 	modal.style.display = "none";
 	var btnAcomp;
 
@@ -118,7 +118,7 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion,Inscrita) {
 	}
 	else
 	{
-		btnAcomp = `<button id="acompanar-button" class="button-add"code = ${id}>Acompañar</button>` ;
+		btnAcomp = `<button id="acompanar-button" class="button-add"code = ${id} creadora = ${Creadora}>Acompañar</button>` ;
 	}
 
 	//console.log(tituloComp)
@@ -312,6 +312,7 @@ document.addEventListener('click', function(e) {
     if (e.target && e.target.id == 'detalles-button') {
     	var encontrar = e.target.attributes.code.value;
 
+
 	    $.ajax({
 	    url: 'http://localhost:3000/eventos/'+ encontrar,
 	    headers: {
@@ -360,6 +361,8 @@ document.addEventListener('click', function(e) {
     }
     if (e.target && e.target.id == 'acompanar-button') {
     	Encontrar2 = e.target.attributes.code.value;
+    	//console.log(e.target.attributes.creadora.value)
+    	localStorage.setItem("creadora", e.target.attributes.creadora.value)
 
     	//Ecnontrar la lista de involucradas
 		$.ajax({
@@ -427,9 +430,9 @@ document.addEventListener('click', function(e) {
 		//var encontrar = e.target.attributes.code.value;
 		//var YoMerengue = localStorage.getItem('YoActual');
 		
-		console.log("lo que se va a mandar");
-			console.log(CInvo);
-			console.log(CInvo.length);
+		//console.log("lo que se va a mandar");
+		//	console.log(CInvo);
+		//	console.log(CInvo.length);
 		
 
 		json_to_send = {
@@ -462,6 +465,136 @@ document.addEventListener('click', function(e) {
 				  //alert((error_msg['responseText']));
 				}
 			  });
+
+//la mandada de Mail --------------------------------------------------------------
+		console.log("Se mando primero este")
+		console.log(YoMerengue)
+		$.ajax({
+		    url: 'http://localhost:3000/users/'+YoMerengue,
+		    headers: {
+		        'Content-Type':'application/json',
+		        'Authorization': 'Bearer ' + token
+		    },
+		    method: 'GET',
+		    dataType: 'json',
+		    success: function(data){
+		      //console.log(data)
+		      localStorage.setItem("email",data.email)
+		      localStorage.setItem("name",data.name)
+		      localStorage.setItem("matricula",data.email.substring(0, 9))
+		      localStorage.setItem("cel",data.celular)
+		      localStorage.setItem("dep",data.carrera)
+		      localStorage.setItem("rol",data.tipoUsuario)
+
+		    },
+		    error: function(error_msg) {
+		      
+		    }
+		  });
+
+		json_to_send = {
+					"Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+					"Purpose": 5,
+					"Content": 10,
+					"RelevantInfo": {
+						"name": localStorage.getItem('name'),
+						"matr": localStorage.getItem('matricula'),
+						"cel": localStorage.getItem('cel'),
+						"dep": localStorage.getItem('dep'),
+						"rol": localStorage.getItem('rol')
+					}
+				};
+
+		console.log(json_to_send)
+
+		json_to_send = JSON.stringify(json_to_send);
+
+		$.ajax({
+				url: 'http://localhost:3000/mail',
+				headers: {
+					'Content-Type':'application/json',
+					'Authorization': 'Bearer '
+				},
+				method: 'POST',
+				dataType: 'json',
+				data: json_to_send,
+				success: function(data){
+
+				},
+				error: function(error_msg) {
+
+				}
+			  });
+
+		
+//Maldito Mail --------------------------------------------------------------------
+
+//la mandada de Mail --------------------------------------------------------------
+		console.log("Se mando segundo este")
+		console.log(localStorage.getItem('creadora'))
+		var Mother = localStorage.getItem('creadora')
+		$.ajax({
+		    url: 'http://localhost:3000/users/'+Mother,
+		    headers: {
+		        'Content-Type':'application/json',
+		        'Authorization': 'Bearer ' + token
+		    },
+		    method: 'GET',
+		    dataType: 'json',
+		    success: function(data){
+
+		      console.log(data)
+		      localStorage.setItem("Cemail",data.email)
+		      localStorage.setItem("Cname",data.name)
+		      localStorage.setItem("Cmatricula",data.email.substring(0, 9))
+		      localStorage.setItem("Ccel",data.celular)
+		      localStorage.setItem("Cdep",data.carrera)
+		      localStorage.setItem("Crol",data.tipoUsuario)
+
+		    },
+		    error: function(error_msg) {
+		      
+		    }
+		  });
+
+		json_to_send = {
+					"Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+					"Purpose": 4,
+					"Content": 9,
+					"RelevantInfo": {
+						"name": localStorage.getItem('Cname'),
+						"matr": localStorage.getItem('Cmatricula'),
+						"cel": localStorage.getItem('Ccel'),
+						"dep": localStorage.getItem('Cdep'),
+						"rol": localStorage.getItem('Crol')
+					}
+				};
+
+		console.log(json_to_send)
+
+		json_to_send = JSON.stringify(json_to_send);
+
+		$.ajax({
+				url: 'http://localhost:3000/mail',
+				headers: {
+					'Content-Type':'application/json',
+					'Authorization': 'Bearer '
+				},
+				method: 'POST',
+				dataType: 'json',
+				data: json_to_send,
+				success: function(data){
+
+				},
+				error: function(error_msg) {
+
+				}
+			  });
+
+		
+//Maldito Mail --------------------------------------------------------------------
+
+
 
 
 		modal3.style.display = "none";
@@ -526,7 +659,6 @@ BtnLogOff.onclick = function() {
 	  //txt = "You pressed Cancel!";
 	}
 }
-
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
