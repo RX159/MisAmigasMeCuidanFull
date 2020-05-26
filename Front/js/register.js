@@ -111,7 +111,8 @@ if($major.val() == '') {
       "carrera": $major.val(),
       "celular": $cel.val(),
       "fotografia": $photo.val(),
-      "validado": "no"
+      "validado": "no",
+      "esTrans" : false
     }
 
     //alert($name);

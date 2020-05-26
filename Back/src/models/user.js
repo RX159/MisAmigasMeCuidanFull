@@ -47,6 +47,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  esTrans: {
+    type: Boolean,
+    required: true
+  },
   tokens: [{
     token: {
       type: String,
