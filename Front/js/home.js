@@ -559,15 +559,9 @@ document.addEventListener('click', function(e) {
 
 		json_to_send = {
 					"Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
-					"Purpose": 4,
+					"Purpose": 3,
 					"Content": 9,
-					"RelevantInfo": {
-						"name": localStorage.getItem('Cname'),
-						"matr": localStorage.getItem('Cmatricula'),
-						"cel": localStorage.getItem('Ccel'),
-						"dep": localStorage.getItem('Cdep'),
-						"rol": localStorage.getItem('Crol')
-					}
+					"RelevantInfo": {}
 				};
 
 		console.log(json_to_send)

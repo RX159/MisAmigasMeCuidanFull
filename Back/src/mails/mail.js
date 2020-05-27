@@ -1,5 +1,6 @@
 var nodemailer = require('nodemailer');
-const creds = require('./creds');
+const User = process.env.user || require('./creds').user;
+const Pass = process.env.pass || require('./creds').pass;
 var MailCompleto;
 var Persona;
 var Proposito;
@@ -9,8 +10,8 @@ var newHtml;
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: creds.user,
-    pass: creds.pass
+    user: User,
+    pass: Pass
   }
 });
 
@@ -25,12 +26,21 @@ function PrepareEmail(req, res){
 
   // 1 = registro nuevo
   // 2 = registro aprobado
-  // 3 = resistro negado
+  // 3 = registro negado
   // 4 = alguien se unio a tu evento
   // 5 = tu te uniste a un evento
   PrepareSubject(Purpose);
 
   // Del 1 al 6 son problemas
+
+  /*
+    1 - Carrera esta mal
+    2 - Foto mal porque hay varias personas
+    3 - Matricula no es legible
+    4 - Matricula no existe
+    5 - Am
+    6 - Foto sin Credencial
+  */
 
   // El 7 es registro aprovado por la admin, va a la chica
   // El 8 es un registro nuevvo para el admin

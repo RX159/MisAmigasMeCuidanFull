@@ -236,6 +236,107 @@ document.addEventListener('click', function(e) {
 			dataType: 'json',
 			data: json_to_send,
 			success: function(data){
+
+//la mandada de Mail --------------------------------------------------------------
+		//console.log("Se mando primero este")
+		//console.log(YoMerengue)
+		/*
+		    1 - Carrera esta mal
+		    2 - Foto mal porque hay varias personas
+		    3 - Matricula no es legible
+		    4 - Matricula no existe
+		    5 - Am
+		  	6 - Foto sin Credencial
+		*/
+
+		/*
+		1 - <option value="sin-credencial">Foto sin la credencial</option>
+		2 - <option value="mas-personas">Foto con más de una persona</option>
+		3 - <option value="ilegible">Matrícula ilegible en la foto</option>
+		4 - <option value="no-mujer">En la foto no se encuentra una mujer</option>
+		5 - <option value="no-matricula">La matrícula no existe en el sistema del Tec</option>
+		6 - <option value="no-carrera">La carrera no existe</option>
+		*/		
+
+		var Contenido = 0;
+		Console.log(Razon.selectedIndex);
+
+		switch(Razon.selectedIndex)
+		{
+			case 0 : Contenido = 6;
+			break;
+			case 1 : Contenido = 2;
+			break;
+			case 2 : Contenido = 3;
+			break;
+			case 3 : Contenido = 5;
+			break;
+			case 4 : Contenido = 4;
+			break;
+			case 5 : Contenido = 1;
+			break;
+		}
+
+		$.ajax({
+		    url: 'http://localhost:3000/users/'+YoMerengue,
+		    headers: {
+		        'Content-Type':'application/json',
+		        'Authorization': 'Bearer ' + token
+		    },
+		    method: 'GET',
+		    dataType: 'json',
+		    success: function(data){
+		      //console.log(data)
+		      localStorage.setItem("email",data.email)
+		      localStorage.setItem("name",data.name)
+		      localStorage.setItem("matricula",data.email.substring(0, 9))
+		      localStorage.setItem("cel",data.celular)
+		      localStorage.setItem("dep",data.carrera)
+		      localStorage.setItem("rol",data.tipoUsuario)
+
+		    },
+		    error: function(error_msg) {
+		      
+		    }
+		  });
+
+		json_to_send = {
+					"Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+					"Purpose": 5,
+					"Content": Contenido,
+					"RelevantInfo": {
+						"name": localStorage.getItem('name'),
+						"matr": localStorage.getItem('matricula'),
+						"cel": localStorage.getItem('cel'),
+						"dep": localStorage.getItem('dep'),
+						"rol": localStorage.getItem('rol')
+					}
+				};
+
+		console.log(json_to_send)
+
+		json_to_send = JSON.stringify(json_to_send);
+
+		$.ajax({
+				url: 'http://localhost:3000/mail',
+				headers: {
+					'Content-Type':'application/json',
+					'Authorization': 'Bearer '
+				},
+				method: 'POST',
+				dataType: 'json',
+				data: json_to_send,
+				success: function(data){
+
+				},
+				error: function(error_msg) {
+
+				}
+			  });
+
+		
+//Maldito Mail --------------------------------------------------------------------
+
 				//Madar mail que fue negada
 				//Razon.options[Razon.selectedIndex] nos dara el motivo/ el template a mandar
 
