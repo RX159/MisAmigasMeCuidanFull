@@ -121,7 +121,7 @@ if($major.val() == '') {
     json_to_send = JSON.stringify(json_to_send);
 
     $.ajax({
-       url: 'http://localhost:3000/users',
+       url: 'https://misamigasmecuidan.herokuapp.com/users',//'http://localhost:3000/users', 
       //url: 'https://miniwebserverrx.herokuapp.com/users',
       headers: {
           'Content-Type':'application/json'
@@ -158,7 +158,7 @@ if($major.val() == '') {
     json_to_send = JSON.stringify(json_to_send);
 
     $.ajax({
-        url: 'http://localhost:3000/mail',
+        url: 'https://misamigasmecuidan.herokuapp.com/mail',//'http://localhost:3000/mail',
         headers: {
           'Content-Type':'application/json',
           'Authorization': 'Bearer '
@@ -197,7 +197,7 @@ if($major.val() == '') {
     json_to_send = JSON.stringify(json_to_send);
 
     $.ajax({
-        url: 'http://localhost:3000/mail',
+        url: 'https://misamigasmecuidan.herokuapp.com/mail',//'http://localhost:3000/mail',
         headers: {
           'Content-Type':'application/json',
           'Authorization': 'Bearer '

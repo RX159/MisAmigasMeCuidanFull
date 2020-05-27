@@ -38,7 +38,7 @@ var Encontrar2;
 function loadPosts() {
   //console.log("entro al load")
   $.ajax({
-    url: 'http://localhost:3000/posts',
+    url: 'https://misamigasmecuidan.herokuapp.com/posts',//'http://localhost:3000/posts',
     headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token
@@ -78,7 +78,7 @@ function LoadPosts(id, asunto, historia) {
 function loadEvents() {
   //console.log("entro al load")
   $.ajax({
-    url: 'http://localhost:3000/eventos',
+    url: 'https://misamigasmecuidan.herokuapp.com/eventos',//'http://localhost:3000/eventos',
     headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token
@@ -194,7 +194,7 @@ btnPublish.onclick = function() {
     json_to_send = JSON.stringify(json_to_send);
 
     $.ajax({
-       url: 'http://localhost:3000/posts',
+       url: 'https://misamigasmecuidan.herokuapp.com/posts',//'http://localhost:3000/posts',
       //url: 'https://miniwebserverrx.herokuapp.com/users',
       headers: {
           'Content-Type':'application/json',
@@ -281,7 +281,7 @@ btnPublish2.onclick = function() {
     console.log(json_to_send)
 
     $.ajax({
-       url: 'http://localhost:3000/eventos',
+       url: 'https://misamigasmecuidan.herokuapp.com/eventos',//'http://localhost:3000/eventos',
       //url: 'https://miniwebserverrx.herokuapp.com/users',
       headers: {
           'Content-Type':'application/json',
@@ -314,7 +314,7 @@ document.addEventListener('click', function(e) {
 
 
 	    $.ajax({
-	    url: 'http://localhost:3000/eventos/'+ encontrar,
+	    url: 'https://misamigasmecuidan.herokuapp.com/eventos/'+ encontrar,//'http://localhost:3000/eventos/'+ encontrar,
 	    headers: {
 	        'Content-Type':'application/json',
 	        'Authorization': 'Bearer ' + token
@@ -366,7 +366,7 @@ document.addEventListener('click', function(e) {
 
     	//Ecnontrar la lista de involucradas
 		$.ajax({
-	    url: 'http://localhost:3000/eventos/'+ Encontrar2,
+	    url: 'https://misamigasmecuidan.herokuapp.com/eventos/'+Encontrar2,//'http://localhost:3000/eventos/'+ Encontrar2,
 	    headers: {
 	        'Content-Type':'application/json',
 	        'Authorization': 'Bearer ' + token
@@ -447,7 +447,7 @@ document.addEventListener('click', function(e) {
 		//Updatear la lista de involucradas para contarme a mi
 
 		$.ajax({
-				url: 'http://localhost:3000/eventos/'+Encontrar2,
+				url: 'https://misamigasmecuidan.herokuapp.com/eventos/'+Encontrar2,//'http://localhost:3000/eventos/'+Encontrar2,
 				headers: {
 					'Content-Type':'application/json',
 					'Authorization': 'Bearer ' + token
@@ -470,7 +470,7 @@ document.addEventListener('click', function(e) {
 		console.log("Se mando primero este")
 		console.log(YoMerengue)
 		$.ajax({
-		    url: 'http://localhost:3000/users/'+YoMerengue,
+		    url: 'https://misamigasmecuidan.herokuapp.com/users/'+YoMerengue,//'http://localhost:3000/users/'+YoMerengue,
 		    headers: {
 		        'Content-Type':'application/json',
 		        'Authorization': 'Bearer ' + token
@@ -510,7 +510,7 @@ document.addEventListener('click', function(e) {
 		json_to_send = JSON.stringify(json_to_send);
 
 		$.ajax({
-				url: 'http://localhost:3000/mail',
+				url: 'https://misamigasmecuidan.herokuapp.com/mail',//'http://localhost:3000/mail',
 				headers: {
 					'Content-Type':'application/json',
 					'Authorization': 'Bearer '
@@ -534,7 +534,7 @@ document.addEventListener('click', function(e) {
 		console.log(localStorage.getItem('creadora'))
 		var Mother = localStorage.getItem('creadora')
 		$.ajax({
-		    url: 'http://localhost:3000/users/'+Mother,
+		    url: 'https://misamigasmecuidan.herokuapp.com/users/'+Mother,//'http://localhost:3000/users/'+Mother,
 		    headers: {
 		        'Content-Type':'application/json',
 		        'Authorization': 'Bearer ' + token
@@ -569,7 +569,7 @@ document.addEventListener('click', function(e) {
 		json_to_send = JSON.stringify(json_to_send);
 
 		$.ajax({
-				url: 'http://localhost:3000/mail',
+				url: 'https://misamigasmecuidan.herokuapp.com/mail',//'http://localhost:3000/mail',
 				headers: {
 					'Content-Type':'application/json',
 					'Authorization': 'Bearer '
@@ -627,7 +627,7 @@ BtnLogOff.onclick = function() {
     	
   
     	$.ajax({
-	      url: 'http://localhost:3000/logout',
+	      url: 'https://misamigasmecuidan.herokuapp.com/logout',//'http://localhost:3000/logout',
 	      headers: {
 	          'Content-Type':'application/json',
         	'Authorization': 'Bearer ' + token

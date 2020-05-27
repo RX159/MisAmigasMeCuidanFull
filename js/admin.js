@@ -49,7 +49,7 @@ var Comment = document.getElementById("comentario");
 function loadUsers() {
   //console.log("entro al load")
   $.ajax({
-    url: 'http://localhost:3000/users',
+    url: 'https://misamigasmecuidan.herokuapp.com/users',//'http://localhost:3000/users',
     headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token
@@ -114,7 +114,7 @@ document.addEventListener('click', function(e) {
         
         var encontrar = e.target.attributes.yo.value;
         $.ajax({
-	    url: 'http://localhost:3000/users/'+encontrar,
+	    url: 'https://misamigasmecuidan.herokuapp.com/users/'+encontrar,//http://localhost:3000/users/'+encontrar,
 	    headers: {
 	        'Content-Type':'application/json',
 	        'Authorization': 'Bearer ' + token
@@ -190,7 +190,7 @@ document.addEventListener('click', function(e) {
 		  json_to_send = JSON.stringify(json_to_send);
 
 		$.ajax({
-			url: 'http://localhost:3000/users/'+Encontrar2,
+			url: 'https://misamigasmecuidan.herokuapp.com/users/'+Encontrar2, //'http://localhost:3000/users/'+Encontrar2,
 			headers: {
 				'Content-Type':'application/json',
 				'Authorization': 'Bearer ' + token
@@ -204,7 +204,7 @@ document.addEventListener('click', function(e) {
 		//console.log("Se mando primero este")
 		//console.log(YoMerengue)
 		$.ajax({
-		    url: 'http://localhost:3000/users/'+Encontrar2,
+		    url: 'https://misamigasmecuidan.herokuapp.com/users/'+Encontrar2,//'http://localhost:3000/users/'+Encontrar2,
 		    headers: {
 		        'Content-Type':'application/json',
 		        'Authorization': 'Bearer ' + token
@@ -233,7 +233,7 @@ document.addEventListener('click', function(e) {
 		json_to_send = JSON.stringify(json_to_send);
 
 		$.ajax({
-				url: 'http://localhost:3000/mail',
+				url: 'https://misamigasmecuidan.herokuapp.com/mail',//'http://localhost:3000/mail',
 				headers: {
 					'Content-Type':'application/json',
 					'Authorization': 'Bearer '
@@ -280,7 +280,7 @@ document.addEventListener('click', function(e) {
 		  json_to_send = JSON.stringify(json_to_send);
 		  //No fuiste aceptada porque la foto no es clara
 		$.ajax({
-			url: 'http://localhost:3000/users/'+Encontrar2,
+			url: 'https://misamigasmecuidan.herokuapp.com/users/'+Encontrar2,//'http://localhost:3000/users/'+Encontrar2,
 			headers: {
 				'Content-Type':'application/json',
 				'Authorization': 'Bearer ' + token
@@ -333,7 +333,7 @@ document.addEventListener('click', function(e) {
 		
 
 		$.ajax({
-		    url: 'http://localhost:3000/users/'+Encontrar2,
+		    url: 'https://misamigasmecuidan.herokuapp.com/users/'+Encontrar2,//'http://localhost:3000/users/'+Encontrar2,
 		    headers: {
 		        'Content-Type':'application/json',
 		        'Authorization': 'Bearer ' + token
@@ -440,7 +440,7 @@ BtnLogOff.onclick = function() {
     	
   
     	$.ajax({
-	      url: 'http://localhost:3000/logout',
+	      url: 'https://misamigasmecuidan.herokuapp.com/logout',//'http://localhost:3000/logout',
 	      headers: {
 	          'Content-Type':'application/json',
         	'Authorization': 'Bearer ' + token
