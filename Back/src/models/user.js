@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
   },
   esTrans: {
     type: Boolean,
-    required: true
+    required: false
   },
   tokens: [{
     token: {

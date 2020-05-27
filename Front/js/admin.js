@@ -200,6 +200,58 @@ document.addEventListener('click', function(e) {
 			data: json_to_send,
 			success: function(data){
 				//Aqui va el mail cuando te aceptan
+//la mandada de Mail --------------------------------------------------------------
+		//console.log("Se mando primero este")
+		//console.log(YoMerengue)
+		$.ajax({
+		    url: 'http://localhost:3000/users/'+Encontrar2,
+		    headers: {
+		        'Content-Type':'application/json',
+		        'Authorization': 'Bearer ' + token
+		    },
+		    method: 'GET',
+		    dataType: 'json',
+		    success: function(data){
+		    	localStorage.setItem("email",data.email)
+		    },
+		    error: function(error_msg) {
+		      
+		    }
+		  });
+
+		console.log(localStorage.getItem('email'));
+
+		json_to_send = {
+					"Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+					"Purpose": 2,
+					"Content": 7,
+					"RelevantInfo": {}
+				};
+
+		console.log(json_to_send)
+
+		json_to_send = JSON.stringify(json_to_send);
+
+		$.ajax({
+				url: 'http://localhost:3000/mail',
+				headers: {
+					'Content-Type':'application/json',
+					'Authorization': 'Bearer '
+				},
+				method: 'POST',
+				dataType: 'json',
+				data: json_to_send,
+				success: function(data){
+
+				},
+				error: function(error_msg) {
+
+				}
+			  });
+
+		
+//Maldito Mail --------------------------------------------------------------------
+
 			},
 			error: function(error_msg) {
 			  alert("No se encontro el usuario");
@@ -209,6 +261,7 @@ document.addEventListener('click', function(e) {
 
 		modal.style.display = "none";
 		modalApprove.style.display = "none";
+		//location.reload();
     }
     if (e.target && e.target.id == 'modal-confirmar-button') {
     	
@@ -259,7 +312,7 @@ document.addEventListener('click', function(e) {
 		*/		
 
 		var Contenido = 0;
-		Console.log(Razon.selectedIndex);
+		console.log(Razon.selectedIndex);
 
 		switch(Razon.selectedIndex)
 		{
@@ -277,8 +330,10 @@ document.addEventListener('click', function(e) {
 			break;
 		}
 
+		
+
 		$.ajax({
-		    url: 'http://localhost:3000/users/'+YoMerengue,
+		    url: 'http://localhost:3000/users/'+Encontrar2,
 		    headers: {
 		        'Content-Type':'application/json',
 		        'Authorization': 'Bearer ' + token
@@ -286,31 +341,20 @@ document.addEventListener('click', function(e) {
 		    method: 'GET',
 		    dataType: 'json',
 		    success: function(data){
-		      //console.log(data)
-		      localStorage.setItem("email",data.email)
-		      localStorage.setItem("name",data.name)
-		      localStorage.setItem("matricula",data.email.substring(0, 9))
-		      localStorage.setItem("cel",data.celular)
-		      localStorage.setItem("dep",data.carrera)
-		      localStorage.setItem("rol",data.tipoUsuario)
-
+		    	localStorage.setItem("email",data.email)
 		    },
 		    error: function(error_msg) {
 		      
 		    }
 		  });
 
+		console.log(localStorage.getItem('email'));
+
 		json_to_send = {
 					"Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
-					"Purpose": 5,
+					"Purpose": 3,
 					"Content": Contenido,
-					"RelevantInfo": {
-						"name": localStorage.getItem('name'),
-						"matr": localStorage.getItem('matricula'),
-						"cel": localStorage.getItem('cel'),
-						"dep": localStorage.getItem('dep'),
-						"rol": localStorage.getItem('rol')
-					}
+					"RelevantInfo": {}
 				};
 
 		console.log(json_to_send)
@@ -349,6 +393,7 @@ document.addEventListener('click', function(e) {
 		
     	modal.style.display = "none";
 		modalApprove.style.display = "none";
+		//location.reload();
     }
      if (e.target && e.target.id == btnCancel) {
 		 modalDeny.style.display = "none";

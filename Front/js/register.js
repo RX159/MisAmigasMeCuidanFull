@@ -26,8 +26,7 @@ $('#signup_button').on('click', (function(event) {
   let $photo_empty = $('#photo-empty')
 
   let $p_instruction = $('#p-instruction')
-
-
+  var ParaMail = 0
 
 
   if($name.val() == '') {
@@ -133,58 +132,25 @@ if($major.val() == '') {
       success: function(data){
         alert("Successfully created");
         console.log('success: ' + data);
-        window.location = '../index.html'
+       
         //Mandar mail que te registraste
         //Mandar mail a la admin para que sepa
 
-      },
-      error: function(error_msg) {
-        if($id.val() != '') {
-          console.log(error_msg)
-          $id2_empty.removeClass('hidden')
-        }
-      }
-    })
+//la mandada de Mail --------------------------------------------------------------
+    //console.log("Se mando primero este")
+    //console.log(YoMerengue)
+    
+    //Para la chica
+    localStorage.setItem("email",$id.val()+"@itesm.mx")
 
-  // // FIN DE BACK //
 
-  //la mandada de Mail --------------------------------------------------------------
-    console.log("Se mando primero este")
-    console.log(YoMerengue)
-    $.ajax({
-        url: 'http://localhost:3000/users/'+YoMerengue,
-        headers: {
-            'Content-Type':'application/json',
-            'Authorization': 'Bearer ' + token
-        },
-        method: 'GET',
-        dataType: 'json',
-        success: function(data){
-          //console.log(data)
-          localStorage.setItem("email",data.email)
-          localStorage.setItem("name",data.name)
-          localStorage.setItem("matricula",data.email.substring(0, 9))
-          localStorage.setItem("cel",data.celular)
-          localStorage.setItem("dep",data.carrera)
-          localStorage.setItem("rol",data.tipoUsuario)
-
-        },
-        error: function(error_msg) {
-          
-        }
-      });
+    console.log(localStorage.getItem('email'));
 
     json_to_send = {
           "Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
-          "Purpose": 5,
-          "Content": 10,
-          "RelevantInfo": {
-            "name": localStorage.getItem('name'),
-            "matr": localStorage.getItem('matricula'),
-            "cel": localStorage.getItem('cel'),
-            "dep": localStorage.getItem('dep'),
-            "rol": localStorage.getItem('rol')
-          }
+          "Purpose": 1,
+          "Content": 11,
+          "RelevantInfo": {}
         };
 
     console.log(json_to_send)
@@ -201,15 +167,68 @@ if($major.val() == '') {
         dataType: 'json',
         data: json_to_send,
         success: function(data){
-
+          console.log("Succes 1")
         },
         error: function(error_msg) {
-
+          console.log("Fail 1")
         }
         });
 
     
 //Maldito Mail --------------------------------------------------------------------
+
+//la mandada de Mail --------------------------------------------------------------
+    //console.log("Se mando primero este")
+    //console.log(YoMerengue)
+    
+    //localStorage.setItem("email",$id.val()+"@itesm.mx")
+    //Para la admin
+    console.log(localStorage.getItem('email'));
+
+    json_to_send = {
+          "Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+          "Purpose": 1,
+          "Content": 8,
+          "RelevantInfo": {}
+        };
+
+    console.log(json_to_send)
+
+    json_to_send = JSON.stringify(json_to_send);
+
+    $.ajax({
+        url: 'http://localhost:3000/mail',
+        headers: {
+          'Content-Type':'application/json',
+          'Authorization': 'Bearer '
+        },
+        method: 'POST',
+        dataType: 'json',
+        data: json_to_send,
+        success: function(data){
+          console.log("Succes 2")
+        },
+        error: function(error_msg) {
+          console.log("Fail 2")
+          window.location = '../index.html'
+        }
+        });
+
+    
+//Maldito Mail --------------------------------------------------------------------
+        setTimeout(() => { window.location = '../index.html'; }, 3000);
+       //window.location = '../index.html'
+      },
+      error: function(error_msg) {
+        if($id.val() != '') {
+          console.log(error_msg)
+          $id2_empty.removeClass('hidden')
+        }
+      }
+    })
+
+  // // FIN DE BACK //
+
 
 
 function validation_matricula(matricula) {
