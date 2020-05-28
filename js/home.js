@@ -125,25 +125,38 @@ function LoadEvents(id, titulo, horaI, horaF, lugar, descripcion,Inscrita, Cread
 	$('#id-card-2').prepend(
 		`<div class="column">
 			<div class="cardEvent">
-	  			<h3>${lugar}</h3>
-	  			<h5 style="border-style: solid;
- 					border-color: #ccccff;
- 					border-width: thin;
- 					padding: 5px;
- 					margin-bottom: -1px">Fecha: ${titulo}</h3>
-	  			<h5 style="border-style: solid;
- 					border-color: #ccccff;
- 					border-width: thin;
- 					padding: 5px;
- 					margin-top: 0px;
- 					margin-bottom: -1px;">Hora inicio: ${horaI}</h3>
-	  			<h5 style="border-style: solid;
- 					border-color: #ccccff;
- 					border-width: thin;
- 					padding: 5px;
- 					margin-top: -0.5px">Hora fin: ${horaF}</h3>
-	  			
-	  			<i id="detalles-button" class="fa fa-ellipsis-h tooltip" aria-hidden="true" code = ${id} group = 1>
+	  			<h3 style="margin-botton: 0px;">${lugar}</h3>
+		  		<h5 style="margin-top: 0px;
+	 				margin-bottom: -1px">Fecha: ${titulo}</h5>
+	 			<div class="r">
+	 				<div class="c left">
+			  			<h5 style="margin-top: 5px;
+		 					margin-bottom: 0px; 
+		 					padding: 5px;
+		 					background-color: #696994; 
+		 					color: white;">Hora inicio</h5>
+		 				<h5 style="margin: 0px;
+		 					padding: 5px;
+		 					background-color: #dedeff; 
+		 					border-style: solid;
+ 							border-color: #ccccff;
+ 							border-width: thin;">${horaI}</h5>
+		  			</div>
+		  			<div class="c right">
+		  				<h5 style="margin-top: 5px;
+	 						margin-bottom: 0px; 
+	 						padding: 5px;
+	 						background-color: #696994; 
+	 						color: white;">Hora fin</h5>
+		 				<h5 style="margin: 0px; 
+		 					padding: 5px;
+		 					background-color: #dedeff; 
+		 					border-style: solid;
+		 					border-color: #ccccff;
+		 					border-width: thin;">${horaF}</h5>
+	  				</div>
+	  			</div>
+	  			<i id="detalles-button" class="fa fa-ellipsis-h tooltip" aria-hidden="true" style="margin-top: 15px;" code = ${id} group = 1>
 	  				<span class="tooltiptext">Presiona para leer todos los detalles</span>
 	  			</i><br>
 	  			<br>
@@ -237,25 +250,38 @@ btnPublish2.onclick = function() {
 	$('#id-card-2').prepend(
 		`<div class="column">
 			<div class="cardEvent">
-	  			<h3>${$('#lugar').val()}</h3>
-	  			<h5 style="border-style: solid;
- 					border-color: #ccccff;
- 					border-width: thin;
- 					padding: 5px;
- 					margin-bottom: -1px">Fecha: ${$('#fecha').val()}</h3>
-	  			<h5 style="border-style: solid;
- 					border-color: #ccccff;
- 					border-width: thin;
- 					padding: 5px;
- 					margin-top: 0px;
- 					margin-bottom: -1px;">Hora inicio: ${$('#hora-inicio').val()}</h3>
-	  			<h5 style="border-style: solid;
- 					border-color: #ccccff;
- 					border-width: thin;
- 					padding: 5px;
- 					margin-top: -0.5px">Hora fin: ${$('#hora-fin').val()}</h3>
-	  			
-	  			<i id="detalles-button" class="fa fa-ellipsis-h tooltip" aria-hidden="true">
+	  			<h3 style="margin-botton: 0px;">${$('#lugar').val()}</h3>
+		  		<h5 style="margin-top: 0px;
+	 				margin-bottom: -1px">Fecha: ${$('#fecha').val()}</h5>
+	 			<div class="r">
+	 				<div class="c left">
+			  			<h5 style="margin-top: 5px;
+		 					margin-bottom: 0px; 
+		 					padding: 5px;
+		 					background-color: #696994; 
+		 					color: white;">Hora inicio</h5>
+		 				<h5 style="margin: 0px;
+		 					padding: 5px;
+		 					background-color: #dedeff; 
+		 					border-style: solid;
+ 							border-color: #ccccff;
+ 							border-width: thin;">${$('#hora-inicio').val()}</h5>
+		  			</div>
+		  			<div class="c right">
+		  				<h5 style="margin-top: 5px;
+	 						margin-bottom: 0px; 
+	 						padding: 5px;
+	 						background-color: #696994; 
+	 						color: white;">Hora fin</h5>
+		 				<h5 style="margin: 0px; 
+		 					padding: 5px;
+		 					background-color: #dedeff; 
+		 					border-style: solid;
+		 					border-color: #ccccff;
+		 					border-width: thin;">${$('#hora-fin').val()}</h5>
+	  				</div>
+	  			</div>
+	  			<i id="detalles-button" class="fa fa-ellipsis-h tooltip" aria-hidden="true" style="margin-top: 15px;">
 	  				<span class="tooltiptext">Presiona para leer todos los detalles</span>
 	  			</i><br>
 	  			<br>

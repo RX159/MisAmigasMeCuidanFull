@@ -15,7 +15,7 @@
 			<span id="name-empty" class="error hidden">El campo del nombre no puede estar vacio</span>
 
 			<div class="input_wrap">
-				<input id="id" class="input-1" type="text" name="id" placeholder="Matricula">
+				<input id="id" class="input-1" type="text" name="id" placeholder="Matr&iacute;cula">
 			</div>
 			<span id="id-empty" class="error hidden">El campo de la matricula no puede estar vacio</span>
 			<span id="id2-empty" class="error hidden">Ya hay una cuenta con esta matricula</span>
@@ -41,6 +41,11 @@
 				</form>
 			</div>
 
+			<div class="input-2 check-left">
+				<input type="checkbox" id="trans" name="trans" value="Trans">
+				<label for="trans">Soy una mujer trans</label><br>
+			</div>
+
 			<div class="input_wrap">
 				<input id="password" class="input-1" type="password" name="password" placeholder="Contrase&#241a">
 			</div>
@@ -55,8 +60,14 @@
 			<div class="input_wrap">
 				<input id="photo2" class="input-1" type="text" name="photo" placeholder="https://drive.google.com/file/d/_id_/preview">
 			</div>
-			<span id="photo_ayuda" class="error" style="color:blue">asegurate que el link de drive, termina en preview</span> <br></br>
+			<span id="photo_ayuda" class="error" style="color:purple">Asegurate que el link de Drive termina en preview</span> <br></br>
 			<span id="photo-empty" class="error hidden">Este campo no puede estar vacío</span>
+			
+			<div class="input-2 check-left-2">
+				<input type="checkbox" id="reglamento" name="reglamento" value="Reglamento">
+				<label for="reglamento">He leído todo el <a href="https://docs.google.com/document/d/1ecnjJcNF8N1HGEsVMVy6XLp83uw_-5NMhOVJvZ28Vao/edit?usp=sharing">reglamento</a> y estoy de acuerdo con él</label><br>
+			</div>
+
 			<button id="signup_button">Registrarse</button>
 			<div id="signup_option">Regresar a <a href="../index.html">inicio de sesion</a></div>
 		</div>

@@ -2,14 +2,12 @@
   box-sizing: border-box;
 }
 
-/* Set height of body and the document to 100% */
 body, html {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #555;
 }
 
-/* Style tab links */
 .tablink {
   background-color: #555;
   color: white;
@@ -25,7 +23,6 @@ body, html {
   background-color: #777;
 }
 
-/* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
   color: black;
   display: none;
@@ -53,24 +50,20 @@ body, html {
   min-height: 100vh;
 }
 
-/* Float four columns side by side */
 .column {
   float: left;
   width: 25%;
   padding: 0 10px;
 }
 
-/* Remove extra left and right margins, due to padding */
 .row {margin: 0 -5px;}
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Responsive columns */
 @media screen and (max-width: 800px) {
   .column {
     width: 100%;
@@ -79,7 +72,6 @@ body, html {
   }
 }
 
-/* Style the counter cards */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   height: 300px;
@@ -95,7 +87,6 @@ body, html {
   padding-top: 10px;
   padding-right: 10px;
   padding-left: 10px;
-  /*overflow-y: scroll;*/
   text-align: center;
   background-color: #f1f1f1;
   margin-bottom: 10px;
@@ -133,22 +124,20 @@ body, html {
   cursor: pointer;
 }
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
 }
 
-/* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -157,7 +146,6 @@ body, html {
   width: 30%;
 }
 
-/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
@@ -261,6 +249,7 @@ textarea {
 #detalles-button {
   color: #555;
   font-size:22px;
+  margin-top: -10px;
 }
 
 #detalles-button:hover {
@@ -352,4 +341,24 @@ tr:nth-child(even) {
 
 #denegar-button {
   background-color: #b30012;
+}
+
+.r {
+  display: flex;
+  justify-content: center; 
+
+}
+
+.c {
+  flex: 0 0 40%;
+  height: auto;
+  padding-top: 20px;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
 }
