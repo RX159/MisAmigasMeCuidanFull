@@ -147,7 +147,7 @@ if($major.val() == '') {
     console.log(localStorage.getItem('email'));
 
     json_to_send = {
-          "Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+          "Destination": localStorage.getItem('email'),
           "Purpose": 1,
           "Content": 11,
           "RelevantInfo": {}
@@ -186,7 +186,7 @@ if($major.val() == '') {
     console.log(localStorage.getItem('email'));
 
     json_to_send = {
-          "Destination": "A01281564@itesm.mx",//localStorage.getItem('email'),
+          "Destination": "misamigasmecuidan.itesm@gmail.com",//localStorage.getItem('email'),
           "Purpose": 1,
           "Content": 8,
           "RelevantInfo": {}
