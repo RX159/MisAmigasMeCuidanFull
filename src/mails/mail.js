@@ -108,7 +108,7 @@ function PrepareBody(number, RelevantInfo){
                 <body>
                   <h3 style="margin-bottom: 0px;">Hola Sorora, hemos revisado y hemos denegado su registro debido a la siguiente razón:</h3>
                   <h3 style="margin-top: 0px; color: purple;"><i>La carrera o departamento ingresado no existe en el sistema del Tec.</i></h3>
-                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: link</h4>
+                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: https://rx159.github.io/MisAmigasMeCuidanFull/html/register.html</h4>
                   <h4 style="margin-bottom: 0px;">Cualquier inconveniente, favor de responder a este correo.</h4>
                   <h1 style="color: purple; margin-top: 0px;">#MisAmigasMeCuidan</h1>
                 </body>
@@ -127,7 +127,7 @@ function PrepareBody(number, RelevantInfo){
                 <body>
                   <h3 style="margin-bottom: 0px;">Hola Sorora, hemos revisado y hemos denegado su registro debido a la siguiente razón:</h3>
                   <h3 style="margin-top: 0px; color: purple;"><i>La foto que compartiste muestra más de una persona.</i></h3>
-                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: link</h4>
+                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: https://rx159.github.io/MisAmigasMeCuidanFull/html/register.html</h4>
                   <h4 style="margin-bottom: 0px;">Cualquier inconveniente, favor de responder a este correo.</h4>
                   <h1 style="color: purple; margin-top: 0px;">#MisAmigasMeCuidan</h1>
                 </body>
@@ -146,7 +146,7 @@ function PrepareBody(number, RelevantInfo){
                 <body>
                   <h3 style="margin-bottom: 0px;">Hola Sorora, hemos revisado y hemos denegado su registro debido a la siguiente razón:</h3>
                   <h3 style="margin-top: 0px; color: purple;"><i>La foto que compartiste muestra una matrícula ilegible.</i></h3>
-                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: link</h4>
+                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: https://rx159.github.io/MisAmigasMeCuidanFull/html/register.html</h4>
                   <h4 style="margin-bottom: 0px;">Cualquier inconveniente, favor de responder a este correo.</h4>
                   <h1 style="color: purple; margin-top: 0px;">#MisAmigasMeCuidan</h1>
                 </body>
@@ -165,7 +165,7 @@ function PrepareBody(number, RelevantInfo){
                 <body>
                   <h3 style="margin-bottom: 0px;">Hola Sorora, hemos revisado y hemos denegado su registro debido a la siguiente razón:</h3>
                   <h3 style="margin-top: 0px; color: purple;"><i>La matrícula ingresada no existe en el sistema del Tec.</i></h3>
-                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: link</h4>
+                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: https://rx159.github.io/MisAmigasMeCuidanFull/html/register.html</h4>
                   <h4 style="margin-bottom: 0px;">Cualquier inconveniente, favor de responder a este correo.</h4>
                   <h1 style="color: purple; margin-top: 0px;">#MisAmigasMeCuidan</h1>
                 </body>
@@ -201,7 +201,7 @@ function PrepareBody(number, RelevantInfo){
                 <body>
                   <h3 style="margin-bottom: 0px;">Hola Sorora, hemos revisado y hemos denegado su registro debido a la siguiente razón:</h3>
                   <h3 style="margin-top: 0px; color: purple;"><i>La foto que compartiste no muestra tu credencial del Tec.</i></h3>
-                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: link</h4>
+                  <h4>Recuerda que la foto debe incluirte a ti sosteniendo tu credencial donde se pueda ver claramente la matrícula, nombre, carrera/departamento y foto. Ingresa nuevamente tu información en la página del registro: https://rx159.github.io/MisAmigasMeCuidanFull/html/register.html</h4>
                   <h4 style="margin-bottom: 0px;">Cualquier inconveniente, favor de responder a este correo.</h4>
                   <h1 style="color: purple; margin-top: 0px;">#MisAmigasMeCuidan</h1>
                 </body>
@@ -219,7 +219,7 @@ function PrepareBody(number, RelevantInfo){
                   </head>
                   <body>
                     <h3 style="margin-bottom: 0px;">Hola Sorora, ¡tu cuenta ha sido aprobada!</h3>
-                    <h4>Para iniciar sesión, entra al siguiente link: link</h4>
+                    <h4>Para iniciar sesión, entra al siguiente link: https://rx159.github.io/MisAmigasMeCuidanFull/index.html</h4>
                     <h4 style="margin-bottom: 0px;">Cualquier duda que tengas, puedes mandar a este mismo correo.</h4>
                     <h1 style="color: purple; margin-top: 0px;">#MisAmigasMeCuidan</h1>
                   </body>
@@ -237,7 +237,7 @@ function PrepareBody(number, RelevantInfo){
                   </head>
                   <body>
                     <h3 style="margin-bottom: 0px;">Hola administradora, tienes un nuevo registro que revisar.</h3>
-                    <h4>Para iniciar sesión, entra al siguiente link: link</h4>
+                    <h4>Para iniciar sesión, entra al siguiente link: https://rx159.github.io/MisAmigasMeCuidanFull/index.html</h4>
                     <h1 style="color: purple;">#MisAmigasMeCuidan</h1>
                   </body>
                   </html>`
