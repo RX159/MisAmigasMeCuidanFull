@@ -185,6 +185,10 @@ btnAdd1.onclick = function() {
 
 // Se publica en el Tendedero después de presionar el botón
 btnPublish.onclick = function() {
+	if ($('#titulo').val() == "" || $('#descripcion').val()) {
+		alert("Todos los campos necesitan un valor.");
+		return
+	}
 	modal.style.display = "none";
 	$('#id-card-1').prepend(
 		`<div class="column">
@@ -246,6 +250,12 @@ btnAdd2.onclick = function() {
 
 // Se publica en Acompañar después de presionar el botón
 btnPublish2.onclick = function() {
+
+	if ($('#lugar').val() == "" || $('#fecha').val() == "" || $('#hora-inicio').val() == "" || $('#hora-fin').val() == "" || $('#descripcion2').val() == "" || $('#lugar').val() == "") {
+		alert("Todos los campos necesitan un valor.");
+		return
+	}
+
 	modal2.style.display = "none";
 	$('#id-card-2').prepend(
 		`<div class="column">

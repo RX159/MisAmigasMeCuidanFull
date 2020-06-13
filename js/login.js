@@ -80,9 +80,7 @@ $('#login_button').on('click', function(){
       error: function(error_msg) {
         if (password.val() != ''){
           credentials_incorrect.removeClass('hidden')
-      }
-        
-        alert((error_msg['responseText']));
+        }
       }
     });
 });
